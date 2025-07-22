@@ -14,7 +14,7 @@ export function TopNav() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 font-semibold">
             <Home className="w-5 h-5" />
-            Portfolio
+            Gregory Cabral
           </Link>
 
           <div className="flex items-center gap-2">

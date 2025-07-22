@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Devicon } from "@/components/devicon"
 import type { Project } from "@/types/portfolio"
 import { ExternalLink, Github, Globe, Smartphone, Server, Terminal, ArrowRight } from "lucide-react"
+import { ProjectTag } from "./ProjectTag"
 
 const tagIconMap: { [key: string]: any } = {
   Globe,
@@ -27,32 +28,24 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group relative">
-      {/* Animated border */}
-      <div className="absolute inset-0 rounded-lg">
-        <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-accent-orange/20 transition-colors duration-300" />
-        <div className="absolute top-0 left-0 w-0 h-0.5 bg-accent-orange group-hover:w-full transition-all duration-700 ease-out" />
-        <div className="absolute top-0 right-0 w-0.5 h-0 bg-accent-orange group-hover:h-full transition-all duration-700 ease-out delay-200" />
-        <div className="absolute bottom-0 right-0 w-0 h-0.5 bg-accent-orange group-hover:w-full transition-all duration-700 ease-out delay-400" />
-        <div className="absolute bottom-0 left-0 w-0.5 h-0 bg-accent-orange group-hover:h-full transition-all duration-700 ease-out delay-600" />
-      </div>
+   
 
       {/* Changed grid proportions: 35% image, 65% content */}
       <div className="grid md:grid-cols-[35%_65%] h-full relative z-10">
         {/* Left side - Preview Image (35%) */}
         <div className="relative h-48 md:h-full bg-muted/20">
           {previewImage ? (
-            <Image
+            <img
               src={previewImage || "/placeholder.svg"}
               alt={`${project.title} preview`}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-300 h-full max-h-60 w-full"
               sizes="(max-width: 768px) 100vw, 35vw"
             />
           ) : (
             <div className="w-full h-full bg-muted/40 flex items-center justify-center">
               <div className="text-center">
                 <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Image
+                  <img
                     src={project.appIcon || "/placeholder.svg"}
                     alt={`${project.title} icon`}
                     width={32}
@@ -72,7 +65,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
             {/* Header with icon and title */}
             <div className="flex items-start gap-3 mb-3">
               <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-                <Image
+                <img
                   src={project.appIcon || "/placeholder.svg"}
                   alt={`${project.title} icon`}
                   width={48}
@@ -85,12 +78,8 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
                 {/* Project Type */}
                 <div className="flex flex-wrap gap-1">
                   {project.tags.map((tag, index) => {
-                    const TagIcon = tagIconMap[tag.icon]
                     return (
-                      <Badge key={index} variant="secondary" className="flex items-center gap-1 text-xs h-5">
-                        <TagIcon className="w-2.5 h-2.5" />
-                        {tag.name}
-                      </Badge>
+                      <ProjectTag key={index} type={tag} />
                     )
                   })}
                 </div>
@@ -141,7 +130,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
               <Button asChild variant="outline" size="sm">
                 <Link href={project.liveUrl} target="_blank">
                   <ExternalLink className="w-3 h-3 mr-1" />
-                  Demo
+                  View Site
                 </Link>
               </Button>
             )}

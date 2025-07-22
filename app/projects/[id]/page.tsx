@@ -103,16 +103,15 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
           <div className="order-1">
             <h2 className="text-2xl font-bold mb-4">Gallery</h2>
             <div className="grid gap-4">
-              {project.gallery.map((image, index) => (
+              {project?.gallery.map((image, index) => (
                 <div
                   key={index}
                   className="relative aspect-video rounded-lg overflow-hidden cursor-pointer group"
                   onClick={() => openLightbox(index)}
                 >
-                  <Image
+                  <img
                     src={image || "/placeholder.svg"}
                     alt={`${project.title} screenshot ${index + 1}`}
-                    fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
@@ -146,7 +145,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                       className="block p-3 rounded-lg border hover:bg-muted/50 transition-colors"
                     >
                       <div className="flex items-start gap-3">
-                        <Image
+                        <img
                           src={commit.author.avatar || "/placeholder.svg"}
                           alt={commit.author.name}
                           width={32}

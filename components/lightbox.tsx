@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -99,13 +98,12 @@ export function Lightbox({ images, initialIndex, isOpen, onClose }: LightboxProp
 
       {/* Main image */}
       <div className="relative max-w-[90vw] max-h-[90vh] w-full h-full flex items-center justify-center">
-        <Image
+        <img
           src={images[currentIndex] || "/placeholder.svg"}
           alt={`Gallery image ${currentIndex + 1}`}
           width={1200}
           height={800}
           className="max-w-full max-h-full object-contain"
-          priority
         />
       </div>
 
@@ -127,10 +125,9 @@ export function Lightbox({ images, initialIndex, isOpen, onClose }: LightboxProp
                 index === currentIndex ? "border-accent-orange" : "border-transparent opacity-60 hover:opacity-80"
               }`}
             >
-              <Image
+              <img
                 src={image || "/placeholder.svg"}
                 alt={`Thumbnail ${index + 1}`}
-                fill
                 className="object-cover"
                 sizes="64px"
               />

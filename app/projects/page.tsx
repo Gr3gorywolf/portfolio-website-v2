@@ -4,7 +4,7 @@ import { useState } from "react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { TopNav } from "@/components/top-nav"
 import { ProjectCard } from "@/components/project-card"
-import { ProjectFilters } from "@/components/project-filters"
+import { ProjectFilters } from "@/components/ProjectFilters"
 import { projects } from "@/data/projects"
 import type { Project } from "@/types/portfolio"
 

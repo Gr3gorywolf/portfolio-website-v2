@@ -1,3 +1,6 @@
+import { DeviconName } from "@/components/devicon"
+import { PROJECT_TAGS } from "@/utils/constants"
+
 export interface PersonalInfo {
   name: string
   title: string
@@ -17,9 +20,9 @@ export interface PersonalInfo {
 
 export interface Skill {
   name: string
-  devicon: string // Changed from icon to devicon
+  devicon: DeviconName
   years: number
-  level: number // 0-100
+  level: number
 }
 
 export interface SkillCategory {
@@ -52,16 +55,16 @@ export interface Project {
   id: string
   title: string
   description: string
-  appIcon: string // Changed from icon to appIcon (image URL)
-  tags: ProjectTag[]
+  appIcon: string
+  tags: (keyof typeof PROJECT_TAGS)[]
   technologies: Technology[]
-  subprojects?: Subproject[] // Changed from dependencies
+  subprojects?: Subproject[]
   repositories: Repository[]
   liveUrl?: string
   gallery: string[]
-  readmeUrl?: string // Custom README URL
-  featured: boolean // Add this new field
-  releases?: Release[] // Add this new field
+  readmeUrl?: string
+  featured?: boolean
+  releases?: Release[]
 }
 
 export interface Subproject {
@@ -69,22 +72,16 @@ export interface Subproject {
   url: string
 }
 
-export interface ProjectTag {
-  name: string
-  icon: string
-  type: "mobile" | "web" | "backend" | "script" 
-}
-
 export interface Technology {
   name: string
-  devicon: string // Changed from icon to devicon
-  color: string
+  devicon: DeviconName
+  color?: string
 }
 
 export interface Repository {
   name: string
   url: string
-  isMain: boolean
+  isMain?: boolean
 }
 
 export interface Release {

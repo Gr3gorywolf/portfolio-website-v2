@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Devicon } from "@/components/devicon"
 import type { Project } from "@/types/portfolio"
 import { X, Filter, ChevronDown, ChevronUp } from "lucide-react"
+import { PROJECT_TAGS } from "@/utils/constants"
 
 interface ProjectFiltersProps {
   projects: Project[]
@@ -19,7 +20,7 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
   const [isExpanded, setIsExpanded] = useState(false) // Default collapsed
 
   // Get unique project types
-  const projectTypes = Array.from(new Set(projects.flatMap((project) => project.tags.map((tag) => tag.type))))
+  const projectTypes = Array.from(new Set(projects.flatMap((project) => project.tags)))
 
   // Get unique technologies
   const allTechnologies = Array.from(
@@ -30,7 +31,7 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
     let filtered = projects
 
     if (types.length > 0) {
-      filtered = filtered.filter((project) => project.tags.some((tag) => types.includes(tag.type)))
+      filtered = filtered.filter((project) => project.tags.some((tag) => types.includes(tag)))
     }
 
     if (technologies.length > 0) {
@@ -109,19 +110,21 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
           <div className="mt-2">
             <h4 className="text-sm font-medium mb-2">Project Types</h4>
             <div className="flex flex-wrap gap-2">
-              {projectTypes.map((type) => (
-                <Button
+              {projectTypes.map((type) => {
+                const Icon = PROJECT_TAGS[type]?.icon || null
+                return (<Button
                   key={type}
                   variant={selectedTypes.includes(type) ? "default" : "outline"}
                   size="sm"
                   onClick={() => toggleType(type)}
-                  className={`capitalize ${
+                  className={`capitalize flex flex-row gap-1 ${
                     selectedTypes.includes(type) ? "bg-accent-orange hover:bg-accent-orange/90" : ""
                   }`}
                 >
-                  {type}
+                 {Icon && <Icon className="w-3 h-3" />} {type}
                 </Button>
-              ))}
+              );
+              })}
             </div>
           </div>
 

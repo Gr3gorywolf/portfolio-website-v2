@@ -26,7 +26,7 @@ export default function AboutPage() {
         <section id="personal" className="mb-16">
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="flex justify-center lg:justify-start">
-              <img  src={personalInfo.image || "/placeholder.svg"} alt={personalInfo.name} className="rounded-lg object-cover" />
+              <img src={personalInfo.image || "/placeholder.svg"} alt={personalInfo.name} className="rounded-lg object-cover" />
             </div>
             <div className="lg:col-span-2">
               <Card>
@@ -92,7 +92,7 @@ export default function AboutPage() {
 
         {/* Experience Section */}
         <section id="experience" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center" >Work Experience</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Work Experience</h2>
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-accent-orange"></div>
             <div className="space-y-8">
@@ -135,8 +135,8 @@ export default function AboutPage() {
           </div>
         </section>
         {/* Education Section */}
-        <section id="education"  className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center" >Education</h2>
+        <section id="education" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-center">Education</h2>
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-accent-orange"></div>
             <div className="space-y-8">
@@ -164,9 +164,9 @@ export default function AboutPage() {
         </section>
 
         {/* Featured Projects Section */}
-        <section  className="mb-16" id="featured-projects">
+        <section className="mb-16" id="featured-projects">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4" >Featured Projects</h2>
+            <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">Here are some of my most notable projects that showcase my skills and experience</p>
           </div>
 
@@ -189,23 +189,25 @@ export default function AboutPage() {
         </section>
 
         {/* Skills Section */}
-        <section id="skills"  className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center" >Skills</h2>
-          <div className="space-y-8">
+        <section id="skills" className="mb-16">
+          <h2 className="text-3xl font-bold mb-6 text-center">Skills</h2>
+          <div className="space-y-4">
             {skillCategories.map((category, categoryIndex) => (
-              <Card key={categoryIndex}>
-                <CardHeader>
-                  <CardTitle className="text-xl">{category.title}</CardTitle>
+              <Card key={categoryIndex} className="overflow-hidden">
+                <CardHeader className="py-3 px-4">
+                  <CardTitle className="text-base">{category.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <CardContent className="p-4 pt-0">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-11 gap-3">
                     {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="text-center">
-                        <CircularProgress percentage={skill.level} showPercentage>
-                          <Devicon name={skill.devicon} whiteBackgroundWhenBlack={true} size={24} />
+                      <div key={skillIndex} className="text-center mb-2">
+                        <CircularProgress percentage={skill.level} strokeWidth={5} showPercentage>
+                          <Devicon name={skill.devicon} whiteBackgroundWhenBlack={true} size={18} />
                         </CircularProgress>
-                        <h3 className="font-medium mt-2">{skill.name}</h3>
-                        <p className="text-sm text-muted-foreground">{skill.years} years</p>
+                        <h3 className="text-sm font-medium mt-1">{skill.name}</h3>
+                        <p className="text-xs text-muted-foreground">
+                          {skill.years} {skill.years === 1 ? "year" : "years"}
+                        </p>
                       </div>
                     ))}
                   </div>

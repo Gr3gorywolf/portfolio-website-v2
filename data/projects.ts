@@ -2,98 +2,94 @@ import type { Project } from "@/types/portfolio"
 
 export const projects: Project[] = [
   {
-    id: "1",
-    title: "E-commerce Platform",
-    description: "Complete e-commerce platform with admin panel, shopping cart, and integrated payment system.",
-    appIcon: "/placeholder.svg?height=60&width=60&text=EC",
-    tags: [
-      { name: "Web", icon: "Globe", type: "web" },
-      { name: "Backend", icon: "Server", type: "backend" },
-    ],
+    id: "refugio-musical",
+    title: "Refugio Musical",
+    description: "Refugio musical is a online radio station based on La Romana Dominican Republic managed by Jose Cabral (My father)",
+    appIcon: "https://github.com/Gr3gorywolf/refugio-musical/blob/main/public/logo.png?raw=true",
+    tags: ["web"],
     technologies: [
-      { name: "React", devicon: "react", color: "#61DAFB" },
-      { name: "Node.js", devicon: "nodejs", color: "#339933" },
-      { name: "MongoDB", devicon: "mongodb", color: "#47A248" },
-      { name: "Stripe", devicon: "stripe", color: "#635BFF" },
-    ],
-    subprojects: [
-      { name: "Frontend", url: "https://github.com/yourusername/ecommerce-frontend" },
-      { name: "Backend API", url: "https://github.com/yourusername/ecommerce-backend" },
-      { name: "Admin Panel", url: "https://github.com/yourusername/ecommerce-admin" },
+      { name: "NextJS", devicon: "nextjs" },
+      { name: "Tailwind CSS", devicon: "tailwindcss" },
+      { name: "TypeScript", devicon: "typescript" },
+      { name: "Node.js", devicon: "nodejs" },
+      { name: "AzuraCast", devicon: "azuracast" }
     ],
     repositories: [
-      { name: "ecommerce-frontend", url: "https://github.com/yourusername/ecommerce-frontend", isMain: true },
-      { name: "ecommerce-backend", url: "https://github.com/yourusername/ecommerce-backend", isMain: false },
+      {
+        isMain: true,
+        name: "Refugio Musical",
+        url: "https://github.com/Gr3gorywolf/refugio-musical"
+      }
     ],
-    liveUrl: "https://ecommerce-demo.vercel.app",
+    liveUrl: "https://refugiomusical.com",
     gallery: [
-      "/placeholder.svg?height=400&width=600&text=Screenshot1",
-      "/placeholder.svg?height=400&width=600&text=Screenshot2",
-      "/placeholder.svg?height=400&width=600&text=Screenshot3",
+      "/projects-assets/refugio-musical/refugio.png",
+      "/projects-assets/refugio-musical/refugio-2.png",
     ],
     featured: true,
-    releases: [
-      {
-        name: "Major Update v2.0",
-        version: "v2.0.0",
-        description:
-          "Complete redesign with new payment system and improved performance. Added dark mode support and mobile optimization.",
-        date: "2024-01-10",
-        url: "https://github.com/yourusername/ecommerce-frontend/releases/tag/v2.0.0",
-      },
-      {
-        name: "Bug Fixes v1.5.2",
-        version: "v1.5.2",
-        description: "Fixed critical security vulnerabilities and improved checkout flow.",
-        date: "2023-12-15",
-        url: "https://github.com/yourusername/ecommerce-frontend/releases/tag/v1.5.2",
-      },
-    ],
+    releases: []
   },
   {
-    id: "2",
-    title: "Task Manager Mobile",
-    description: "Mobile app for task management with real-time sync and push notifications.",
-    appIcon: "/placeholder.svg?height=60&width=60&text=TM",
-    tags: [{ name: "Mobile", icon: "Smartphone", type: "mobile" }],
+    id: "HardWatch",
+    title: "HardWatch",
+    description: "HardWatch is an application designed to monitor and collect real-time system performance metrics. It sends this data to the HardWatch Server and allows remote execution of commands via a web interface or the ZeppOS app.",
+    appIcon: "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-client/refs/heads/main/icon.ico",
+    tags: ["web", "script", "backend", "mobile"],
     technologies: [
-      { name: "React Native", devicon: "react", color: "#61DAFB" },
-      { name: "Firebase", devicon: "firebase", color: "#FFCA28" },
-      { name: "TypeScript", devicon: "typescript", color: "#3178C6" },
+      { name: "NextJS", devicon: "nextjs" },
+      { name: "Tailwind CSS", devicon: "tailwindcss" },
+      { name: "TypeScript", devicon: "typescript" },
+      { name: "Node.js", devicon: "nodejs" },
+      { name: "Python", devicon: "python" },
+      { name: "ZeppOs SDK", devicon: "zeppos" }
     ],
     repositories: [
-      { name: "task-manager-mobile", url: "https://github.com/yourusername/task-manager-mobile", isMain: true },
+      {
+        isMain: true,
+        name: "HardWatch Client",
+        url: "https://github.com/Gr3gorywolf/HardWatch-client"
+      },
+       {
+        name: "HardWatch Server",
+        url: "https://github.com/Gr3gorywolf/HardWatch-server"
+      },
+       {
+        name: "HardWatch ZeppOS App",
+        url: "https://github.com/Gr3gorywolf/HardWatch-ZeppOs"
+      }
     ],
     gallery: [
-      "/placeholder.svg?height=600&width=300&text=Mobile1",
-      "/placeholder.svg?height=600&width=300&text=Mobile2",
-      "/placeholder.svg?height=600&width=300&text=Mobile3",
+      "/projects-assets/hardwatch/hardwatch.png",
+      "/projects-assets/hardwatch/hardwatch-2.png",
+      "/projects-assets/hardwatch/hardwatch-3.png",
+      "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-ZeppOs/refs/heads/main/docs/HardWatch-Demo.gif"
     ],
     featured: true,
-    releases: [
-      {
-        name: "iOS Release v1.2",
-        version: "v1.2.0",
-        description: "First stable release for iOS with full feature parity. Includes offline mode and improved sync.",
-        date: "2024-01-05",
-        url: "https://github.com/yourusername/task-manager-mobile/releases/tag/v1.2.0",
-      },
-    ],
-  },
-  {
-    id: "3",
-    title: "HardWatch Client",
-    description: "Hardware monitoring application with real-time system metrics and alerts.",
-    appIcon: "/placeholder.svg?height=60&width=60&text=HW",
-    tags: [{ name: "Script", icon: "Terminal", type: "script" }],
-    technologies: [
-      { name: "Python", devicon: "python", color: "#3776AB" },
-      { name: "React", devicon: "react", color: "#61DAFB" },
-      { name: "TypeScript", devicon: "typescript", color: "#3178C6" },
-    ],
-    repositories: [{ name: "hardwatch-client", url: "https://github.com/Gr3gorywolf/HardWatch-client", isMain: true }],
-    gallery: ["/placeholder.svg?height=400&width=600&text=Chart1", "/placeholder.svg?height=400&width=600&text=Chart2"],
     readmeUrl: "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-client/refs/heads/main/readme.md",
-    featured: false,
   },
+   {
+    id: "decky-script-runner",
+    title: "Decky Script Runner",
+    description: "Decky Script Runner is a plugin designed for the Steam Deck, offering a powerful environment to run, manage, and edit scripts. With a focus on flexibility, it supports running multiple scripts simultaneously, editing and uploading script through the integrated sideloader, and sharing scripts within a community-driven repository.",
+    appIcon: "https://github.com/Gr3gorywolf/decky-script-runner/blob/main/assets/logo.png?raw=true",
+    tags: ["web", "script", "mobile"],
+    technologies: [
+      { name: "React", devicon: "react" },
+      { name: "TypeScript", devicon: "typescript" },
+      { name: "Node.js", devicon: "nodejs" },
+      { name: "Python", devicon: "python" },
+      { name: "Decky API", devicon: "decky" }
+    ],
+    repositories: [
+      {
+        isMain: true,
+        name: "Decky Script Runner",
+        url: "https://github.com/Gr3gorywolf/decky-script-runner"
+      }
+    ],
+    gallery: [
+      "https://private-user-images.githubusercontent.com/26353631/387413515-299b625e-ffd8-40cc-b0e2-de650ac8c462.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMyMjE0NTMsIm5iZiI6MTc1MzIyMTE1MywicGF0aCI6Ii8yNjM1MzYzMS8zODc0MTM1MTUtMjk5YjYyNWUtZmZkOC00MGNjLWIwZTItZGU2NTBhYzhjNDYyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA3MjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNzIyVDIxNTIzM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE1NGVmMTI2MTdmNjE1MDZiMDAyMDA2MWVlMWJjYTA2Yjc2ZTM0NmQzMWIwMWMwODk3NWU4NDA3MzlkMjg1ODMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.F7XeszZdiuFicQz5GPxAKrYpgsAAMug7xa73JMAPafY", 
+    ],
+    featured: true,
+  }
 ]

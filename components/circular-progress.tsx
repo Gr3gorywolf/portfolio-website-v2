@@ -14,8 +14,8 @@ interface CircularProgressProps {
 
 export function CircularProgress({
   percentage,
-  size = 80,
-  strokeWidth = 8,
+  size = 60,
+  strokeWidth = 6,
   children,
   showPercentage = false,
   animate = true,

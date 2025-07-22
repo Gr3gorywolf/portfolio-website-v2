@@ -1,29 +1,22 @@
-"use client"
-
-import Image from "next/image"
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Devicon } from "@/components/devicon"
-import type { Project } from "@/types/portfolio"
-import { ExternalLink, Github, Globe, Smartphone, Server, Terminal, Tag } from "lucide-react"
-
-const tagIconMap: { [key: string]: any } = {
-  Globe,
-  Smartphone,
-  Server,
-  Terminal,
-}
+"use client";
+import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Devicon } from "@/components/devicon";
+import type { Project } from "@/types/portfolio";
+import { ExternalLink, Github, Tag } from "lucide-react";
+import { PROJECT_TAGS } from "@/utils/constants";
+import { ProjectTag } from "./ProjectTag";
 
 interface ProjectCardProps {
-  project: Project
-  showDetailButton?: boolean
+  project: Project;
+  showDetailButton?: boolean;
 }
 
 export function ProjectCard({ project, showDetailButton = true }: ProjectCardProps) {
-  const hasSubprojects = project.subprojects && project.subprojects.length > 0
-  const mainRepo = project.repositories.find((repo) => repo.isMain) || project.repositories[0]
+  const hasSubprojects = project.repositories && project.repositories.length > 1;
+  const mainRepo = project.repositories.find((repo) => repo.isMain) || project.repositories[0];
 
   // Redesigned layout for detail page (when showDetailButton is false)
   if (!showDetailButton) {
@@ -44,13 +37,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
             <div className="flex items-start gap-4">
               {/* Project Icon */}
               <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 shadow-md">
-                <Image
-                  src={project.appIcon || "/placeholder.svg"}
-                  alt={`${project.title} icon`}
-                  width={80}
-                  height={80}
-                  className="w-full h-full object-cover"
-                />
+                <img src={project.appIcon || "/placeholder.svg"} alt={`${project.title} icon`} width={80} height={80} className="w-full h-full object-cover" />
               </div>
 
               {/* Title and Tags */}
@@ -58,13 +45,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
                 <h1 className="text-3xl font-bold mb-2">{project.title}</h1>
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.tags.map((tag, index) => {
-                    const TagIcon = tagIconMap[tag.icon]
-                    return (
-                      <Badge key={index} variant="secondary" className="flex items-center gap-1">
-                        <TagIcon className="w-3 h-3" />
-                        {tag.name}
-                      </Badge>
-                    )
+                    return <ProjectTag type={tag} key={index} />;
                   })}
                 </div>
                 <p className="text-muted-foreground text-lg leading-relaxed">{project.description}</p>
@@ -92,17 +73,12 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
               {/* Subprojects */}
               {hasSubprojects && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">Project Components</h3>
+                  <h3 className="text-lg font-semibold mb-3">Repositories:</h3>
                   <div className="grid gap-2">
-                    {project.subprojects!.map((subproject, index) => (
-                      <Link
-                        key={index}
-                        href={subproject.url}
-                        target="_blank"
-                        className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors group"
-                      >
+                    {project.repositories!.map((repository, index) => (
+                      <Link key={index} href={repository.url} target="_blank" className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors group">
                         <Github className="w-4 h-4 text-muted-foreground group-hover:text-accent-orange" />
-                        <span className="font-medium">{subproject.name}</span>
+                        <span className="font-medium">{repository.name}</span>
                         <ExternalLink className="w-3 h-3 text-muted-foreground ml-auto" />
                       </Link>
                     ))}
@@ -114,11 +90,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
               {project.releases && project.releases.length > 0 && (
                 <div>
                   <h3 className="text-lg font-semibold mb-3">Latest Release</h3>
-                  <Link
-                    href={project.releases[0].url}
-                    target="_blank"
-                    className="block p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors group"
-                  >
+                  <Link href={project.releases[0].url} target="_blank" className="block p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors group">
                     <div className="flex items-start gap-3">
                       <Tag className="w-5 h-5 text-accent-orange mt-0.5" />
                       <div className="flex-1">
@@ -171,7 +143,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
                     <Link href={project.liveUrl} target="_blank">
                       <ExternalLink className="w-4 h-4 mr-3" />
                       <div className="text-left">
-                        <div className="font-medium">View Live Demo</div>
+                        <div className="font-medium">View Live Page</div>
                         <div className="text-xs opacity-90">See it in action</div>
                       </div>
                     </Link>
@@ -221,65 +193,46 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
           </div>
         </CardContent>
       </Card>
-    )
+    );
   }
 
   // Original layout for project listing page with gallery and animated border
   return (
-    <Card className="h-full flex flex-col overflow-hidden relative group">
-      {/* Animated border */}
-      <div className="absolute inset-0 rounded-lg">
-        <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-accent-orange/20 transition-colors duration-300" />
-        <div className="absolute top-0 left-0 w-0 h-0.5 bg-accent-orange group-hover:w-full transition-all duration-700 ease-out" />
-        <div className="absolute top-0 right-0 w-0.5 h-0 bg-accent-orange group-hover:h-full transition-all duration-700 ease-out delay-200" />
-        <div className="absolute bottom-0 right-0 w-0 h-0.5 bg-accent-orange group-hover:w-full transition-all duration-700 ease-out delay-400" />
-        <div className="absolute bottom-0 left-0 w-0.5 h-0 bg-accent-orange group-hover:h-full transition-all duration-700 ease-out delay-600" />
-      </div>
-
+    <Card className="h-full flex flex-col overflow-hidden relative group ">
       {/* Gallery Section */}
-      <div className="relative h-48 bg-muted/20 z-10">
+      <div className="relative h-48 max-h-48 bg-muted/20 z-10">
         {project.gallery && project.gallery.length > 0 ? (
-          <div className="grid grid-cols-2 h-full gap-1">
+          <div className={`grid ${project.gallery.length >= 2 ? "grid-cols-2" : "grid-cols-1"} h-full gap-1`}>
             {/* Main image - takes left half */}
             <div className="relative">
-              <Image
-                src={project.gallery[0] || "/placeholder.svg"}
-                alt={`${project.title} preview`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 25vw"
-              />
+              <img src={project.gallery[0] || "/placeholder.svg"} alt={`${project.title} preview`} className={`object-cover h-full max-h-48 ${project.gallery.length === 1 ? "w-full" : ""}`} sizes="(max-width: 768px) 50vw, 25vw" />
             </div>
 
             {/* Secondary images - right half */}
-            <div className="grid grid-rows-2 gap-1">
-              {project.gallery.slice(1, 3).map((image, index) => (
-                <div key={index} className="relative">
-                  <Image
-                    src={image || "/placeholder.svg"}
-                    alt={`${project.title} preview ${index + 2}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 25vw, 12.5vw"
-                  />
-                  {/* Overlay for additional images count */}
-                  {index === 1 && project.gallery.length > 3 && (
-                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-                      <span className="text-white text-sm font-medium">+{project.gallery.length - 3} more</span>
-                    </div>
-                  )}
-                </div>
-              ))}
-
-              {/* Fill empty slots if less than 3 images */}
-              {project.gallery.length === 2 && (
-                <div className="relative bg-muted/40 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
-                    <div className="w-4 h-4 bg-muted-foreground/30 rounded"></div>
+            {project.gallery.length > 1 && (
+              <div className="grid grid-rows-2 gap-1 max-h-48">
+                {project.gallery.slice(1, 3).map((image, index) => (
+                  <div key={index} className="relative">
+                    <img src={image || "/placeholder.svg"} alt={`${project.title} preview ${index + 2}`} fill className="object-cover" sizes="(max-width: 768px) 25vw, 12.5vw" />
+                    {/* Overlay for additional images count */}
+                    {index === 1 && project.gallery.length > 3 && (
+                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                        <span className="text-white text-sm font-medium">+{project.gallery.length - 3} more</span>
+                      </div>
+                    )}
                   </div>
-                </div>
-              )}
-            </div>
+                ))}
+
+                {/* Fill empty slots if less than 3 images */}
+                {project.gallery.length === 2 && (
+                  <div className="relative bg-muted/40 flex items-center justify-center h-full">
+                    <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
+                      <div className="w-4 h-4 bg-muted-foreground/30 rounded"></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         ) : (
           // Fallback when no gallery images
@@ -297,26 +250,14 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
       <CardHeader className="pb-3 relative z-10">
         <div className="flex items-center gap-3 mb-2">
           <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
-            <Image
-              src={project.appIcon || "/placeholder.svg"}
-              alt={`${project.title} icon`}
-              width={40}
-              height={40}
-              className="w-full h-full object-cover"
-            />
+            <img src={project.appIcon || "/placeholder.svg"} alt={`${project.title} icon`} width={40} height={40} className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 min-w-0">
             <CardTitle className="text-lg leading-tight">{project.title}</CardTitle>
             {/* Project Types - Moved here, right below title */}
             <div className="flex flex-wrap gap-1 mt-1">
               {project.tags.map((tag, index) => {
-                const TagIcon = tagIconMap[tag.icon]
-                return (
-                  <Badge key={index} variant="secondary" className="flex items-center gap-1 text-xs h-5">
-                    <TagIcon className="w-2.5 h-2.5" />
-                    {tag.name}
-                  </Badge>
-                )
+                return <ProjectTag type={tag} key={index} />;
               })}
             </div>
           </div>
@@ -327,7 +268,6 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
       <CardContent className="flex-1 flex flex-col pt-0 relative z-10">
         {/* Technologies */}
         <div className="mb-4">
-          <h4 className="text-sm font-medium mb-2">Technologies:</h4>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech, index) => (
               <div key={index} className="flex items-center gap-1 text-xs bg-muted px-2 py-1 rounded">
@@ -341,13 +281,13 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
         {/* Subprojects */}
         {hasSubprojects && (
           <div className="mb-4">
-            <h4 className="text-sm font-medium mb-2">Subprojects:</h4>
+            <h4 className="text-sm font-medium mb-2">Repositories:</h4>
             <div className="flex flex-wrap gap-1">
-              {project.subprojects!.map((subproject, index) => (
+              {project.repositories.map((repository, index) => (
                 <Badge key={index} variant="outline" className="text-xs hover:bg-muted cursor-pointer" asChild>
-                  <Link href={subproject.url} target="_blank" className="flex items-center gap-1">
+                  <Link href={repository.url} target="_blank" className="flex items-center gap-1">
                     <Github className="w-3 h-3" />
-                    {subproject.name}
+                    {repository.name}
                   </Link>
                 </Badge>
               ))}
@@ -392,5 +332,5 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

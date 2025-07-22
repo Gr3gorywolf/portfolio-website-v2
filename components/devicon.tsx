@@ -106,6 +106,14 @@ const iconMap = {
   yii: YiiOriginal,
   css3: Css3Original,
   stripe: null,
+  scrum: null,
+  overwolf: null,
+  magic: null,
+  web3: null,
+  nx: null,
+  adobetarget: null,
+  azuracast: null,
+  zeppos: null,
 };
 
 export type DeviconName = keyof typeof iconMap;
