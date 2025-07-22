@@ -88,7 +88,7 @@ export const projects: Project[] = [
       }
     ],
     gallery: [
-      "https://private-user-images.githubusercontent.com/26353631/387413515-299b625e-ffd8-40cc-b0e2-de650ac8c462.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMyMjE0NTMsIm5iZiI6MTc1MzIyMTE1MywicGF0aCI6Ii8yNjM1MzYzMS8zODc0MTM1MTUtMjk5YjYyNWUtZmZkOC00MGNjLWIwZTItZGU2NTBhYzhjNDYyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA3MjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNzIyVDIxNTIzM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE1NGVmMTI2MTdmNjE1MDZiMDAyMDA2MWVlMWJjYTA2Yjc2ZTM0NmQzMWIwMWMwODk3NWU4NDA3MzlkMjg1ODMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.F7XeszZdiuFicQz5GPxAKrYpgsAAMug7xa73JMAPafY", 
+      "/projects-assets/decky-script-runner/script-runner.png", 
     ],
     featured: true,
   }

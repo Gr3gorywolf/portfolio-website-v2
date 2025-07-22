@@ -197,13 +197,11 @@ export default function AboutPage() {
                 <CardHeader className="py-3 px-4">
                   <CardTitle className="text-base">{category.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="p-4 pt-0">
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-11 gap-3">
+                <CardContent className="p-4 pt-1">
+                  <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 xl:grid-cols-11 gap-2">
                     {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="text-center mb-2">
-                        <CircularProgress percentage={skill.level} strokeWidth={5} showPercentage>
-                          <Devicon name={skill.devicon} whiteBackgroundWhenBlack={true} size={18} />
-                        </CircularProgress>
+                      <div key={skillIndex} className="text-center mb-3 flex flex-col cursor-pointer items-center hover:scale-105 transition-transform duration-300">
+                        <Devicon name={skill.devicon} whiteBackgroundWhenBlack={true} className="mb-1" size={35} />
                         <h3 className="text-sm font-medium mt-1">{skill.name}</h3>
                         <p className="text-xs text-muted-foreground">
                           {skill.years} {skill.years === 1 ? "year" : "years"}

@@ -38,7 +38,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
             <img
               src={previewImage || "/placeholder.svg"}
               alt={`${project.title} preview`}
-              className="object-cover group-hover:scale-105 transition-transform duration-300 h-full max-h-60 w-full"
+              className="object-cover  h-full max-h-60 w-full"
               sizes="(max-width: 768px) 100vw, 35vw"
             />
           ) : (

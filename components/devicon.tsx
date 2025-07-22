@@ -153,7 +153,7 @@ export function Devicon({ name, size = 24, className = "", whiteBackgroundWhenBl
 
   if (whiteBackgroundWhenBlack && blackIcons.includes(name)) {
     return (
-      <div className="rounded-full p-2 bg-white">
+      <div className="dark:invert">
         <IconComponent size={size} className={className} />
       </div>
     );

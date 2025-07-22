@@ -22,26 +22,18 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
   if (!showDetailButton) {
     return (
       <Card className="w-full relative overflow-hidden group">
-        {/* Animated border */}
-        <div className="absolute inset-0 rounded-lg">
-          <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-accent-orange/20 transition-colors duration-300" />
-          <div className="absolute top-0 left-0 w-0 h-0.5 bg-accent-orange group-hover:w-full transition-all duration-700 ease-out" />
-          <div className="absolute top-0 right-0 w-0.5 h-0 bg-accent-orange group-hover:h-full transition-all duration-700 ease-out delay-200" />
-          <div className="absolute bottom-0 right-0 w-0 h-0.5 bg-accent-orange group-hover:w-full transition-all duration-700 ease-out delay-400" />
-          <div className="absolute bottom-0 left-0 w-0.5 h-0 bg-accent-orange group-hover:h-full transition-all duration-700 ease-out delay-600" />
-        </div>
 
         <CardContent className="p-0 relative z-10">
           {/* Header Section */}
           <div className="p-6 pb-4 border-b bg-muted/20">
-            <div className="flex items-start gap-4">
+            <div className="flex flex-col md:flex-row  gap-4">
               {/* Project Icon */}
-              <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 shadow-md">
-                <img src={project.appIcon || "/placeholder.svg"} alt={`${project.title} icon`} width={80} height={80} className="w-full h-full object-cover" />
+              <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 shadow-md ">
+                <img src={project.appIcon || "/placeholder.svg"} alt={`${project.title} icon`} width={80} height={80} className="w-full h-full object-cover " />
               </div>
 
               {/* Title and Tags */}
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 items-start">
                 <h1 className="text-3xl font-bold mb-2">{project.title}</h1>
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.tags.map((tag, index) => {
@@ -295,8 +287,8 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
           </div>
         )}
 
-        {/* Last Commit - Mock data */}
-        <div className="mb-4 p-2 bg-muted/50 rounded text-xs">
+         {/* Last Commit - Mock data */}
+        <div className="mb-4 p-2 bg-muted/50 rounded text-xs mt-auto">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 bg-accent-orange rounded-full"></div>
             <span className="font-medium">Your Name</span>
@@ -306,7 +298,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-2 mt-auto">
+        <div className="flex gap-2 ">
           {showDetailButton && (
             <Button asChild size="sm" className="flex-1">
               <Link href={`/projects/${project.id}`}>View Details</Link>
@@ -329,7 +321,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
               </Link>
             </Button>
           )}
-        </div>
+        </div> 
       </CardContent>
     </Card>
   );

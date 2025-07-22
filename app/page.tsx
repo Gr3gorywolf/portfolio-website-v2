@@ -6,7 +6,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 export default function HomePage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/20">
-      <ThemeToggle />
+      <ThemeToggle className="fixed top-4 right-4 z-50" />
 
       <div className="container max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
