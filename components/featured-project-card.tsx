@@ -109,10 +109,10 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-2">
-            <Button asChild size="sm" className="bg-accent-orange hover:bg-accent-orange/90">
+            <Button asChild variant="outline" size="sm" className="bg-transparent ">
               <Link href={`/projects/${project.id}?from=about`}>
-                <ArrowRight className="w-3 h-3 mr-1" />
                 View Details
+                <ArrowRight className="w-3 h-3 mr-1" />
               </Link>
             </Button>
 

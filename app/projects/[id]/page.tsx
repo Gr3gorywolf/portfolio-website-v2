@@ -98,7 +98,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
         </div>
 
         {/* Gallery and Commits Row */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Gallery - Order 1 on mobile, 1 on desktop */}
           <div className="order-1">
             <h2 className="text-2xl font-bold mb-4">Gallery</h2>

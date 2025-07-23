@@ -58,8 +58,8 @@ export interface Project {
   appIcon: string
   tags: (keyof typeof PROJECT_TAGS)[]
   technologies: Technology[]
-  subprojects?: Subproject[]
   repositories: Repository[]
+  actions?: Action[]
   liveUrl?: string
   gallery: string[]
   readmeUrl?: string
@@ -67,6 +67,12 @@ export interface Project {
   releases?: Release[]
 }
 
+
+export interface Action{
+  title: string
+  description: string
+  url: string
+}
 export interface Subproject {
   name: string
   url: string

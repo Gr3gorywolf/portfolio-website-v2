@@ -65,6 +65,23 @@ export const projects: Project[] = [
       "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-ZeppOs/refs/heads/main/docs/HardWatch-Demo.gif"
     ],
     featured: true,
+    actions:[
+      {
+        "title":"Download client",
+        "description":"Download the HardWatch client for your system",
+        "url":"https://github.com/Gr3gorywolf/HardWatch-client/releases/latest"
+      },
+        {
+        "title":"Setup server",
+        "description":"Download and setup the HardWatch server",
+        "url":"https://github.com/Gr3gorywolf/HardWatch-server/releases/latest"
+      },
+      {
+        "title":"Install ZeppOS app",
+        "description":"Download the HardWatch ZeppOS app",
+        "url":"https://github.com/Gr3gorywolf/HardWatch-ZeppOs"
+      }
+    ],
     readmeUrl: "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-client/refs/heads/main/readme.md",
   },
    {

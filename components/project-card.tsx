@@ -22,7 +22,6 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
   if (!showDetailButton) {
     return (
       <Card className="w-full relative overflow-hidden group">
-
         <CardContent className="p-0 relative z-10">
           {/* Header Section */}
           <div className="p-6 pb-4 border-b bg-muted/20">
@@ -130,13 +129,24 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
               <h3 className="text-lg font-semibold">Quick Actions</h3>
 
               <div className="space-y-3">
+                {project.actions?.map((action, index) => (
+                  <Button asChild  variant="outline" className="w-full justify-start bg-transparent h-12">
+                    <Link href={action.url} target="_blank">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      <div className="text-left w-full">
+                        <div className="font-medium">{action.title}</div>
+                        <p className="text-xs opacity-90 ">{action.description}</p>
+                      </div>
+                    </Link>
+                  </Button>
+                ))}
                 {project.liveUrl && (
-                  <Button asChild className="w-full justify-start bg-accent-orange hover:bg-accent-orange/90 h-12">
+                  <Button asChild variant="outline" className="w-full justify-start bg-transparent h-12">
                     <Link href={project.liveUrl} target="_blank">
-                      <ExternalLink className="w-4 h-4 mr-3" />
-                      <div className="text-left">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      <div className="text-left w-full">
                         <div className="font-medium">View Live Page</div>
-                        <div className="text-xs opacity-90">See it in action</div>
+                        <p className="text-xs opacity-90">See it in action</p>
                       </div>
                     </Link>
                   </Button>
@@ -149,7 +159,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
                       <Github className="w-4 h-4 mr-3" />
                       <div className="text-left">
                         <div className="font-medium">View Repository</div>
-                        <div className="text-xs text-muted-foreground">Source code</div>
+                        <div className="text-xs opacity-90">Source code</div>
                       </div>
                     </Link>
                   </Button>
@@ -162,7 +172,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
                       <Tag className="w-4 h-4 mr-3" />
                       <div className="text-left">
                         <div className="font-medium">Latest Release</div>
-                        <div className="text-xs text-muted-foreground">{project.releases[0].version}</div>
+                        <div className="text-xs opacity-90">{project.releases[0].version}</div>
                       </div>
                     </Link>
                   </Button>
@@ -287,7 +297,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
           </div>
         )}
 
-         {/* Last Commit - Mock data */}
+        {/* Last Commit - Mock data */}
         <div className="mb-4 p-2 bg-muted/50 rounded text-xs mt-auto">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 bg-accent-orange rounded-full"></div>
@@ -300,7 +310,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
         {/* Action Buttons */}
         <div className="flex gap-2 ">
           {showDetailButton && (
-            <Button asChild size="sm" className="flex-1">
+            <Button asChild variant="outline" size="sm" className="flex-1">
               <Link href={`/projects/${project.id}`}>View Details</Link>
             </Button>
           )}
@@ -321,7 +331,7 @@ export function ProjectCard({ project, showDetailButton = true }: ProjectCardPro
               </Link>
             </Button>
           )}
-        </div> 
+        </div>
       </CardContent>
     </Card>
   );
