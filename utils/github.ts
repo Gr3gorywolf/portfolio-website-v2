@@ -1,33 +1,73 @@
-export function getGitHubRawUrl(repoUrl: string, branch = "main", filePath = "README.md"): string {
-  // Convert GitHub repo URL to raw URL
-  // From: https://github.com/username/repo
-  // To: https://raw.githubusercontent.com/username/repo/branch/file
+import { Repository } from "@/types/portfolio";
 
-  const match = repoUrl.match(/github\.com\/([^/]+)\/([^/]+)/)
+function getRepoInfo(repoUrl: string) {
+  const match = repoUrl.match(/github\.com\/([^/]+)\/([^/]+)(\.git)?/)
   if (!match) {
-    throw new Error("Invalid GitHub repository URL")
+    return null;
   }
-
-  const [, username, repo] = match
-  const cleanRepo = repo.replace(/\.git$/, "") // Remove .git suffix if present
-
-  return `https://raw.githubusercontent.com/${username}/${cleanRepo}/${branch}/${filePath}`
+  const [, username, repoName] = match
+  const cleanRepoName = repoName.replace(/\.git$/, "");
+  return { username, repoName: cleanRepoName }
 }
 
-export function getReadmeUrl(project: {
+export function getRepoRawUrl(repoUrl: string, branch = "main", filePath = "README.md") {
+  const { username, repoName } = getRepoInfo(repoUrl) || {};
+  if (!username) {
+    return null;
+  }
+  return `https://raw.githubusercontent.com/${username}/${repoName}/${branch}/${filePath}`
+}
+
+export function getRepoReadmeUrl(project: {
   readmeUrl?: string
-  repositories: Array<{ url: string; isMain: boolean }>
+  repositories: Array<Repository>
 }): string {
-  // If custom README URL is provided, use it
   if (project.readmeUrl) {
     return project.readmeUrl
   }
 
-  // Otherwise, generate from main repository
   const mainRepo = project.repositories.find((repo) => repo.isMain) || project.repositories[0]
   if (!mainRepo) {
-    throw new Error("No repository found")
+    ""
   }
 
-  return getGitHubRawUrl(mainRepo.url)
+  return getRepoRawUrl(mainRepo.url) ?? ""
+}
+
+export function getLastRepoCommitUrl(
+  repositoryUrl: string,
+  branch = "main"
+): string {
+  const { username, repoName } = getRepoInfo(repositoryUrl) || {};
+  if (!username || !repoName) {
+    return "";
+  }
+  return `
+    https://api.github.com/repos/${username}/${repoName}/commits/${branch}
+`
+}
+
+
+export function getRepoCommitsUrl(
+  repositoryUrl: string,
+): string {
+  const { username, repoName } = getRepoInfo(repositoryUrl) || {};
+  if (!username || !repoName) {
+    return "";
+  }
+  return `
+    https://api.github.com/repos/${username}/${repoName}/commits?per_page=10
+`
+}
+
+export function getRepoLastReleaseUrl(
+  repositoryUrl: string,
+): string {
+  const { username, repoName } = getRepoInfo(repositoryUrl) || {};
+  if (!username || !repoName) {
+    return "";
+  }
+  return `
+    https://api.github.com/repos/${username}/${repoName}/releases/latest
+`
 }

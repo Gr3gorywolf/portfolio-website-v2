@@ -2,24 +2,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FloatingNav } from "@/components/floating-nav";
+import { FloatingNav, FloatingNavItem } from "@/components/FloatingNav";
 import { CircularProgress } from "@/components/circular-progress";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { TopNav } from "@/components/top-nav";
 import { Devicon } from "@/components/devicon";
 import { personalInfo, skillCategories, education, experience } from "@/data/personal";
-import { Download, Github, Linkedin, Twitter, Globe, Mail, Phone, MapPin, Calendar, FolderOpen } from "lucide-react";
+import { Download, Github, Linkedin, Twitter, Globe, Mail, Phone, MapPin, Calendar, FolderOpen, Briefcase, Code, GraduationCap, User } from "lucide-react";
 
 // Add import at the top
 import { FeaturedProjectCard } from "@/components/featured-project-card";
 import { projects } from "@/data/projects";
 
-export default function AboutPage() {
+
+
+export default  function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       <TopNav />
       <ThemeToggle />
-      <FloatingNav />
+      <FloatingNav page="about" />
 
       <div className="container max-w-6xl mx-auto px-4 py-8 pt-20">
         {/* Personal Info Section */}
@@ -199,15 +201,17 @@ export default function AboutPage() {
                 </CardHeader>
                 <CardContent className="p-4 pt-1">
                   <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 xl:grid-cols-11 gap-2">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="text-center mb-3 flex flex-col cursor-pointer items-center hover:scale-105 transition-transform duration-300">
-                        <Devicon name={skill.devicon} whiteBackgroundWhenBlack={true} className="mb-1" size={35} />
-                        <h3 className="text-sm font-medium mt-1">{skill.name}</h3>
-                        <p className="text-xs text-muted-foreground">
-                          {skill.years} {skill.years === 1 ? "year" : "years"}
-                        </p>
-                      </div>
-                    ))}
+                    {category.skills
+                      .sort((a, b) => b.years - a.years)
+                      .map((skill, skillIndex) => (
+                        <div key={skillIndex} className="text-center mb-3 flex flex-col cursor-pointer items-center hover:scale-105 transition-transform duration-300">
+                          <Devicon name={skill.devicon} whiteBackgroundWhenBlack={true} className="mb-1" size={35} />
+                          <h3 className="text-sm font-medium mt-1">{skill.name}</h3>
+                          <p className="text-xs text-muted-foreground">
+                            {skill.years} {skill.years === 1 ? "year" : "years"}
+                          </p>
+                        </div>
+                      ))}
                   </div>
                 </CardContent>
               </Card>

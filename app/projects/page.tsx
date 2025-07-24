@@ -1,15 +1,18 @@
-"use client"
+import { useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { TopNav } from "@/components/top-nav";
+import { ProjectCard } from "@/components/project-card";
+import { ProjectFilters } from "@/components/ProjectFilters";
+import { projects } from "@/data/projects";
+import type { Project } from "@/types/portfolio";
+import { GithubCommitResponse } from "@/types/githubCommitResponse";
+import { getLastRepoCommitUrl } from "@/utils/github";
+import { ProjectsContent } from "@/components/ProjectsPage/ProjectsContent";
+import { getReposLastCommits } from "@/services/github";
 
-import { useState } from "react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { TopNav } from "@/components/top-nav"
-import { ProjectCard } from "@/components/project-card"
-import { ProjectFilters } from "@/components/ProjectFilters"
-import { projects } from "@/data/projects"
-import type { Project } from "@/types/portfolio"
-
-export default function ProjectsPage() {
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects)
+export default async function ProjectsPage() {
+  const projectsRepositories = projects.flatMap((project) => project.repositories.map((repo) => repo.url));
+  const projectCommits: Record<string, GithubCommitResponse> = await getReposLastCommits(projectsRepositories);
 
   return (
     <div className="min-h-screen bg-background">
@@ -21,21 +24,8 @@ export default function ProjectsPage() {
           <h1 className="text-4xl font-bold mb-4">My Projects</h1>
           <div className="w-24 h-1 bg-accent-orange mx-auto"></div>
         </div>
-
-        <ProjectFilters projects={projects} onFilterChange={setFilteredProjects} />
-
-        {filteredProjects.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">No projects found matching your filters.</p>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        )}
+        <ProjectsContent projects={projects} projectCommits={projectCommits} />
       </div>
     </div>
-  )
+  );
 }

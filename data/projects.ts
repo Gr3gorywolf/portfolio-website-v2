@@ -27,7 +27,6 @@ export const projects: Project[] = [
       "/projects-assets/refugio-musical/refugio-2.png",
     ],
     featured: true,
-    releases: []
   },
   {
     id: "HardWatch",
@@ -49,11 +48,11 @@ export const projects: Project[] = [
         name: "HardWatch Client",
         url: "https://github.com/Gr3gorywolf/HardWatch-client"
       },
-       {
+      {
         name: "HardWatch Server",
         url: "https://github.com/Gr3gorywolf/HardWatch-server"
       },
-       {
+      {
         name: "HardWatch ZeppOS App",
         url: "https://github.com/Gr3gorywolf/HardWatch-ZeppOs"
       }
@@ -65,26 +64,26 @@ export const projects: Project[] = [
       "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-ZeppOs/refs/heads/main/docs/HardWatch-Demo.gif"
     ],
     featured: true,
-    actions:[
+    actions: [
       {
-        "title":"Download client",
-        "description":"Download the HardWatch client for your system",
-        "url":"https://github.com/Gr3gorywolf/HardWatch-client/releases/latest"
-      },
-        {
-        "title":"Setup server",
-        "description":"Download and setup the HardWatch server",
-        "url":"https://github.com/Gr3gorywolf/HardWatch-server/releases/latest"
+        "title": "Download client",
+        "description": "Download the HardWatch client for your system",
+        "url": "https://github.com/Gr3gorywolf/HardWatch-client/releases/latest"
       },
       {
-        "title":"Install ZeppOS app",
-        "description":"Download the HardWatch ZeppOS app",
-        "url":"https://github.com/Gr3gorywolf/HardWatch-ZeppOs"
+        "title": "Setup server",
+        "description": "Download and setup the HardWatch server",
+        "url": "https://github.com/Gr3gorywolf/HardWatch-server/releases/latest"
+      },
+      {
+        "title": "Install ZeppOS app",
+        "description": "Download the HardWatch ZeppOS app",
+        "url": "https://github.com/Gr3gorywolf/HardWatch-ZeppOs"
       }
     ],
     readmeUrl: "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-client/refs/heads/main/readme.md",
   },
-   {
+  {
     id: "decky-script-runner",
     title: "Decky Script Runner",
     description: "Decky Script Runner is a plugin designed for the Steam Deck, offering a powerful environment to run, manage, and edit scripts. With a focus on flexibility, it supports running multiple scripts simultaneously, editing and uploading script through the integrated sideloader, and sharing scripts within a community-driven repository.",
@@ -105,7 +104,7 @@ export const projects: Project[] = [
       }
     ],
     gallery: [
-      "/projects-assets/decky-script-runner/script-runner.png", 
+      "/projects-assets/decky-script-runner/script-runner.png",
     ],
     featured: true,
   }

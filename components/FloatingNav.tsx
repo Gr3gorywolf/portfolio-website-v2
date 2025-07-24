@@ -2,18 +2,38 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { User, Code, GraduationCap, Briefcase, FolderOpen } from "lucide-react"
+import { User, Briefcase, GraduationCap, FolderOpen, Code, Image, FileText, Info, GitCommitVertical, BookOpenText, GitGraph } from "lucide-react"
 
-const navItems = [
-  { id: "personal", label: "Personal", icon: User },
-  { id: "experience", label: "Experience", icon: Briefcase },
-  { id: "education", label: "Education", icon: GraduationCap },
-  { id: "featured-projects", label: "Projects", icon: FolderOpen },
-  { id: "skills", label: "Skills", icon: Code },
-]
 
-export function FloatingNav() {
-  const [activeSection, setActiveSection] = useState("personal")
+export interface FloatingNavItem {
+  id: string
+  label: string
+  icon: React.ComponentType<{ className?: string }>
+}
+
+const pagesNavItems = {
+  "about": [
+    { id: "personal", label: "Personal", icon: User },
+    { id: "experience", label: "Experience", icon: Briefcase },
+    { id: "education", label: "Education", icon: GraduationCap },
+    { id: "featured-projects", label: "Projects", icon: FolderOpen },
+    { id: "skills", label: "Skills", icon: Code },
+  ],
+  "project-details":[
+    { id: "info", label: "Info", icon: Info },
+    { id: "gallery", label: "Gallery", icon: Image },
+    { id: "commits", label: "Commits", icon: GitGraph},
+    { id: "readme", label: "README", icon: BookOpenText },
+  ]
+}
+
+interface Props {
+  page: keyof typeof pagesNavItems
+}
+
+export function FloatingNav({ page }: Props) {
+  const navItems = pagesNavItems[page] ?? []
+  const [activeSection, setActiveSection] = useState(navItems[0].id ?? "")
 
   useEffect(() => {
     let isMounted = true

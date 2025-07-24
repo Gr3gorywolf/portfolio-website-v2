@@ -64,7 +64,6 @@ export interface Project {
   gallery: string[]
   readmeUrl?: string
   featured?: boolean
-  releases?: Release[]
 }
 
 
@@ -88,14 +87,6 @@ export interface Repository {
   name: string
   url: string
   isMain?: boolean
-}
-
-export interface Release {
-  name: string
-  version: string
-  description: string
-  date: string
-  url: string
 }
 
 export interface GitHubCommit {
