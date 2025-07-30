@@ -27,6 +27,7 @@ export const projects: Project[] = [
       "/projects-assets/refugio-musical/refugio-2.png",
     ],
     featured: true,
+    accentColor: "#f44336"
   },
   {
     id: "HardWatch",
@@ -82,6 +83,7 @@ export const projects: Project[] = [
       }
     ],
     readmeUrl: "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-client/refs/heads/main/readme.md",
+    accentColor: "#4caf50"
   },
   {
     id: "decky-script-runner",
@@ -107,5 +109,6 @@ export const projects: Project[] = [
       "/projects-assets/decky-script-runner/script-runner.png",
     ],
     featured: true,
+    accentColor: "#ffffff"
   }
 ]

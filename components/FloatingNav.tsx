@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 import { User, Briefcase, GraduationCap, FolderOpen, Code, Image, FileText, Info, GitCommitVertical, BookOpenText, GitGraph } from "lucide-react"
 
 

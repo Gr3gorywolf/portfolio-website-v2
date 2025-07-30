@@ -63,6 +63,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -70,9 +71,9 @@
 
 /* Custom CSS Variables */
 :root {
-  --accent-orange: #ff9800;
-  --accent-orange-dark: #f57c00;
-  --accent-orange-light: #ffb74d;
+  --accent-orange: #4caf50;
+  --accent-orange-dark: #388e3c;
+  --accent-orange-light: #81c784;
 }
 
 .accent-orange {
@@ -96,5 +97,5 @@
 }
 
 ul::marker {
-    content: "";
+  content: "";
 }

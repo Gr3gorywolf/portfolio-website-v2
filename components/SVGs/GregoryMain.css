@@ -1,0 +1,145 @@
+.gregory-main .cls1 {
+  isolation: isolate;
+}
+
+.gregory-main .cls-18,
+.gregory-main .cls-2 {
+  stroke: #000;
+  stroke-miterlimit: 10;
+}
+
+.gregory-main .cls-2 {
+  stroke-width: 13px;
+  fill: #d81b60;
+}
+
+.gregory-main .cls-3,
+.gregory-main .cls-5 {
+  fill: #0c0103;
+}
+
+.gregory-main .cls-4 {
+  fill: #160d0f;
+}
+
+.gregory-main .cls-5,
+.gregory-main .cls-7 {
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.gregory-main .cls-6,
+.gregory-main .cls-7 {
+  fill: #3c2415;
+}
+
+.gregory-main .cls-8 {
+  fill: #9b5f5f;
+}
+
+.gregory-main .cls-9 {
+  fill: #eae8e8;
+}
+
+.gregory-main .cls-10 {
+  fill: #1c1c1c;
+}
+
+.gregory-main .cls-11 {
+  fill: #633b3b;
+}
+
+.gregory-main .cls-12,
+.gregory-main .cls-18 {
+  fill: none;
+}
+
+.gregory-main .cls-13,
+.gregory-main .cls-17 {
+  fill: #fff;
+}
+
+.gregory-main .cls-14 {
+  fill: #c0bcc7;
+}
+
+.gregory-main .cls-15 {
+  fill: #1e0f0a;
+}
+
+.gregory-main .cls-16 {
+  fill: #3a1c10;
+}
+
+.gregory-main .cls-17 {
+  opacity: 0.53;
+}
+
+.gregory-main .cls-18 {
+  stroke-width: 8px;
+}
+
+.gregory-main .cls-19 {
+  fill: #1e130d;
+}
+
+@keyframes color_change {
+  0% {
+    fill: #d81b60;
+  }
+  10% {
+    fill: #7b1fa2;
+  }
+  20% {
+    fill: #512da8;
+  }
+  30% {
+    fill: #303f9f;
+  }
+  40% {
+    fill: #1976d2;
+  }
+  50% {
+    fill: #0288d1;
+  }
+  60% {
+    fill: #0097a7;
+  }
+  70% {
+    fill: #00796b;
+  }
+  80% {
+    fill: #388e3c;
+  }
+  90% {
+    fill: #689f38;
+  }
+}
+
+.gregory-main .color_change {
+  animation-name: color_change;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-3%);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+.floating-animation {
+	animation-name: float;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-direction:normal;
+}
+

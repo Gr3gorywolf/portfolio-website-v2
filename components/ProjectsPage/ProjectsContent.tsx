@@ -4,7 +4,7 @@ import { GithubCommitResponse } from "@/types/githubCommitResponse";
 import { Project } from "@/types/portfolio";
 import { getLastRepoCommitUrl } from "@/utils/github";
 import { FC, useState } from "react";
-import { ProjectCard } from "../project-card";
+import { ProjectCard } from "../ProjectCard";
 import { ProjectFilters } from "../ProjectFilters";
 
 interface Props {

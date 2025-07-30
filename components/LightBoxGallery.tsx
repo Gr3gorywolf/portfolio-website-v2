@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Lightbox } from "./lightbox";
+import { Lightbox } from "./LightBox";
 
 interface Props {
   images: string[];

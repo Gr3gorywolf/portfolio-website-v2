@@ -1,4 +1,4 @@
-import { DeviconName } from "@/components/devicon"
+import { DeviconName } from "@/components/DevIcon"
 import { PROJECT_TAGS } from "@/utils/constants"
 
 export interface PersonalInfo {
@@ -55,6 +55,7 @@ export interface Project {
   id: string
   title: string
   description: string
+  accentColor?: string
   appIcon: string
   tags: (keyof typeof PROJECT_TAGS)[]
   technologies: Technology[]

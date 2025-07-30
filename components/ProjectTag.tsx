@@ -1,5 +1,5 @@
 import { PROJECT_TAGS } from "@/utils/constants";
-import { Badge } from "./ui/badge";
+import { Badge } from "./ui/Badge";
 import { FC } from "react";
 
 interface props {

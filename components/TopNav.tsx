@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 import { User, FolderOpen, Home } from "lucide-react"
-import { ThemeToggle } from "./theme-toggle"
+import { ThemeToggle } from "./ThemeToggle"
 
 export function TopNav() {
   const pathname = usePathname()

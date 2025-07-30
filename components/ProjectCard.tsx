@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Devicon } from "@/components/devicon";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { Devicon } from "@/components/DevIcon";
 import type { Project } from "@/types/portfolio";
 import { ExternalLink, Github, Tag } from "lucide-react";
 import { PROJECT_TAGS } from "@/utils/constants";
@@ -141,7 +141,7 @@ export function ProjectCard({ project, lastCommit }: ProjectCardProps) {
             "mt-auto": !lastCommit,
           })}
         >
-          <Button asChild variant="outline" size="sm" className="flex-1">
+          <Button asChild size="sm" className="flex-1">
             <Link href={`/projects/${project.id}`}>View Details</Link>
           </Button>
 

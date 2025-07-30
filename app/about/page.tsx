@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/Button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { FloatingNav, FloatingNavItem } from "@/components/FloatingNav";
-import { CircularProgress } from "@/components/circular-progress";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { TopNav } from "@/components/top-nav";
-import { Devicon } from "@/components/devicon";
+import { CircularProgress } from "@/components/CircularProgress";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { TopNav } from "@/components/TopNav";
+import { Devicon } from "@/components/DevIcon";
 import { personalInfo, skillCategories, education, experience } from "@/data/personal";
 import { Download, Github, Linkedin, Twitter, Globe, Mail, Phone, MapPin, Calendar, FolderOpen, Briefcase, Code, GraduationCap, User } from "lucide-react";
 
 // Add import at the top
-import { FeaturedProjectCard } from "@/components/featured-project-card";
+import { FeaturedProjectCard } from "@/components/FeaturedProjectCard";
 import { projects } from "@/data/projects";
 
 

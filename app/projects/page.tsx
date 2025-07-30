@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { TopNav } from "@/components/top-nav";
-import { ProjectCard } from "@/components/project-card";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { TopNav } from "@/components/TopNav";
+import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectFilters } from "@/components/ProjectFilters";
 import { projects } from "@/data/projects";
 import type { Project } from "@/types/portfolio";
