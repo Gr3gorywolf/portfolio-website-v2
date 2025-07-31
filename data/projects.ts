@@ -1,4 +1,4 @@
-import type { Project } from "@/types/portfolio"
+import type { Project } from "@/types/Portfolio"
 
 export const projects: Project[] = [
   {
@@ -62,7 +62,13 @@ export const projects: Project[] = [
       "/projects-assets/hardwatch/hardwatch.png",
       "/projects-assets/hardwatch/hardwatch-2.png",
       "/projects-assets/hardwatch/hardwatch-3.png",
-      "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-ZeppOs/refs/heads/main/docs/HardWatch-Demo.gif"
+    ],
+    demos: [
+      {
+        url: "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-ZeppOs/refs/heads/main/docs/HardWatch-Demo.gif",
+        type: "gif",
+        title: "HardWatch ZeppOS Demo",
+      }
     ],
     featured: true,
     actions: [

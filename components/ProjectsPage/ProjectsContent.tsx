@@ -1,7 +1,7 @@
 "use client";
 import { projects } from "@/data/projects";
-import { GithubCommitResponse } from "@/types/githubCommitResponse";
-import { Project } from "@/types/portfolio";
+import { GithubCommitResponse } from "@/types/GithubCommitResponse";
+import { Project } from "@/types/Portfolio";
 import { getLastRepoCommitUrl } from "@/utils/github";
 import { FC, useState } from "react";
 import { ProjectCard } from "../ProjectCard";

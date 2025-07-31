@@ -51,6 +51,7 @@ export interface Experience {
   logo: string // Changed from icon to logo
 }
 
+
 export interface Project {
   id: string
   title: string
@@ -65,6 +66,14 @@ export interface Project {
   gallery: string[]
   readmeUrl?: string
   featured?: boolean
+  demos?: Demo[]
+}
+
+export interface Demo {
+  title?: string
+  url: string
+  type: "video" | "gif"
+  thumbnail?: string
 }
 
 

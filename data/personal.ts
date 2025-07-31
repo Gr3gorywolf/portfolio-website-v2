@@ -1,4 +1,4 @@
-import type { PersonalInfo, SkillCategory, Education, Experience } from "@/types/portfolio"
+import type { PersonalInfo, SkillCategory, Education, Experience } from "@/types/Portfolio"
 
 export const personalInfo: PersonalInfo = {
   name: "Gregory Alexander Cabral De Los Santos",

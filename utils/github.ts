@@ -1,4 +1,4 @@
-import { Repository } from "@/types/portfolio";
+import { Repository } from "@/types/Portfolio";
 
 function getRepoInfo(repoUrl: string) {
   const match = repoUrl.match(/github\.com\/([^/]+)\/([^/]+)(\.git)?/)

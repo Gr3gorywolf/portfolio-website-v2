@@ -4,11 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Devicon } from "@/components/DevIcon";
-import type { Project } from "@/types/portfolio";
+import type { Project } from "@/types/Portfolio";
 import { ExternalLink, Github, Tag } from "lucide-react";
 import { PROJECT_TAGS } from "@/utils/constants";
 import { ProjectTag } from "./ProjectTag";
-import { GithubCommitResponse } from "@/types/githubCommitResponse";
+import { GithubCommitResponse } from "@/types/GithubCommitResponse";
 import { humanReadableDate } from "@/utils/dates";
 import classNames from "classnames";
 import { truncateString } from "@/utils/string";
@@ -88,7 +88,7 @@ export function ProjectCard({ project, lastCommit }: ProjectCardProps) {
             </div>
           </div>
         </div>
-        <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
+        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-6">{project.description}</p>
       </CardHeader>
 
       <CardContent className="flex-1 flex flex-col pt-0 relative z-10">

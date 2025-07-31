@@ -1,15 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 type Props = {
-    accent: string; // Ejemplo: "#4caf50"
-};
-const root = document.documentElement;
-const defaultStyles = {
-    "accent-orange": root.style.getPropertyValue("--accent-orange"),
-    "accent-orange-light": root.style.getPropertyValue("--accent-orange-light"),
-    "accent-orange-dark": root.style.getPropertyValue("--accent-orange-dark"),
+    accent: string;
 };
 
 export const AccentColorChanger = ({ accent }: Props) => {
@@ -29,10 +23,15 @@ export const AccentColorChanger = ({ accent }: Props) => {
         return `#${((1 << 24) + (Math.floor(r) << 16) + (Math.floor(g) << 8) + Math.floor(b)).toString(16).slice(1)}`;
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const light = lighten(accent, 0.3);
         const dark = darken(accent, 0.2);
-
+        const root = document.documentElement;
+        const defaultStyles = {
+            "accent-orange": document.documentElement.style.getPropertyValue("--accent-orange"),
+            "accent-orange-light": document.documentElement.style.getPropertyValue("--accent-orange-light"),
+            "accent-orange-dark": document.documentElement.style.getPropertyValue("--accent-orange-dark"),
+        };
         root.style.setProperty("--accent-orange", accent);
         root.style.setProperty("--accent-orange-light", light);
         root.style.setProperty("--accent-orange-dark", dark);

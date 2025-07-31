@@ -71,9 +71,9 @@
 
 /* Custom CSS Variables */
 :root {
-  --accent-orange: #4caf50;
-  --accent-orange-dark: #388e3c;
-  --accent-orange-light: #81c784;
+  --accent-orange: #ffffff;
+  --accent-orange-dark: #ffffff;
+  --accent-orange-light: #cccccc ;
 }
 
 .accent-orange {

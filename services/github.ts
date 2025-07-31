@@ -1,5 +1,5 @@
-import { GithubCommitResponse } from "@/types/githubCommitResponse";
-import { GithubReleaseResponse } from "@/types/githubReleaseResponse";
+import { GithubCommitResponse } from "@/types/GithubCommitResponse";
+import { GithubReleaseResponse } from "@/types/GithubReleaseResponse";
 import { getLastRepoCommitUrl, getRepoCommitsUrl, getRepoLastReleaseUrl } from "@/utils/github";
 export const getReposLastCommits = async (repos: string[]) => {
     const commits: Record<string, GithubCommitResponse> = {};

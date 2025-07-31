@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
 import { Card, CardContent } from "@/components/ui/Card"
 import { Devicon } from "@/components/DevIcon"
-import type { Project } from "@/types/portfolio"
+import type { Project } from "@/types/Portfolio"
 import { X, Filter, ChevronDown, ChevronUp } from "lucide-react"
 import { PROJECT_TAGS } from "@/utils/constants"
 
