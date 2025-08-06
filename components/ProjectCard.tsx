@@ -39,7 +39,7 @@ export function ProjectCard({ project, lastCommit }: ProjectCardProps) {
               <div className="grid grid-rows-2 gap-1 max-h-48">
                 {project.gallery.slice(1, 3).map((image, index) => (
                   <div key={index} className="relative">
-                    <img src={image || "/placeholder.svg"} alt={`${project.title} preview ${index + 2}`} fill className="object-cover max-h-[94px] w-full" sizes="(max-width: 768px) 25vw, 12.5vw" />
+                    <img src={image || "/placeholder.svg"} alt={`${project.title} preview ${index + 2}`} className="object-cover max-h-[94px] w-full" sizes="(max-width: 768px) 25vw, 12.5vw" />
                     {/* Overlay for additional images count */}
                     {index === 1 && project.gallery.length > 3 && (
                       <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
@@ -110,7 +110,7 @@ export function ProjectCard({ project, lastCommit }: ProjectCardProps) {
             <h4 className="text-sm font-medium mb-2">Repositories:</h4>
             <div className="flex flex-wrap gap-1">
               {project.repositories.map((repository, index) => (
-                <Badge key={index} variant="outline" className="text-xs hover:bg-muted cursor-pointer" asChild>
+                <Badge key={index} variant="outline" className="text-xs hover:bg-muted cursor-pointer">
                   <Link href={repository.url} target="_blank" className="flex items-center gap-1">
                     <Github className="w-3 h-3" />
                     {repository.name}

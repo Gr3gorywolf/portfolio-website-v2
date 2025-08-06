@@ -111,7 +111,6 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
                                         key={index}
                                         variant="outline"
                                         className="text-xs hover:bg-muted cursor-pointer"
-                                        asChild
                                     >
                                         <Link href={repository.url} target="_blank" className="flex items-center gap-1">
                                             <Github className="w-3 h-3" />

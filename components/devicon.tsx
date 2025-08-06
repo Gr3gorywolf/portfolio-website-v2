@@ -111,6 +111,8 @@ const iconMap = {
   kotlin: KotlinOriginal,
   sass:SassOriginal,
   electron:ElectronOriginal,
+  ssml: null,
+  decky: null,
   stripe: null,
   scrum: null,
   overwolf: null,
