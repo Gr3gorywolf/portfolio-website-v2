@@ -23,6 +23,7 @@ import { ProjectDetailDemoCard } from "@/components/ProjectDetailsPage/ProjectDe
 import "./color-overrides.css";
 import { AnimatedWrapper } from "@/components/AnimatedWrapper";
 import { AnimatedStaggeredGrid } from "@/components/AnimatedStaggeredGrid";
+import { ProjectLoader } from "@/components/ProjectLoader";
 
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
@@ -49,8 +50,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
         console.error("Error generating README URL:", error);
         readmeUrl = "";
     }
-    const navItem = (item: FloatingNavItem): FloatingNavItem => item;
-
+    const navItem = (item: FloatingNavItem): FloatingNavItem => item; 
     return (
         <>
             <div id="project-details" className="min-h-screen bg-background">

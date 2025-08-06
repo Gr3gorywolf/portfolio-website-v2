@@ -14,7 +14,9 @@ export interface PersonalInfo {
     github: string
     linkedin: string
     twitter?: string
-    website?: string
+    website?: string,
+    discord: string
+    instagram?: string
   }
 }
 

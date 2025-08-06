@@ -11,11 +11,13 @@ export const personalInfo: PersonalInfo = {
       I have strong experience building and maintaining cross-platform mobile apps using Flutter, React Native, and Xamarin, including platform-specific optimizations and real-time functionality with WebSockets. I’m also well-versed in CI/CD workflows (GitHub Actions, Jenkins), containerization with Docker, and working in cloud environments such as Google Cloud. I'm quick to adapt to new stacks and tools, and consistently bring a product-focused mindset to every project I join—whether it's modernizing legacy codebases, optimizing performance, or delivering full-featured applications from scratch.
 `,
   image: "/img/profile.jpg",
-  cvUrl: "/cv.pdf",
+  cvUrl: "https://docs.google.com/document/d/1_GCV52vZD_zvfPNw8fQmXt_m9BdTAFJLDId7e_m1Fps/export?format=pdf",
   socialLinks: {
     github: "https://github.com/gr3gorywolf",
     linkedin: "https://www.linkedin.com/in/gregory-alexander-cabral-de-los-santos-79835614b/",
     website: "https://links.gregoryc.dev",
+    discord: "https://discordapp.com/users/277984143604711425",
+    instagram: "https://www.instagram.com/gr3gorywolf/",
   },
 }
 

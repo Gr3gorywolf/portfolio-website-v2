@@ -9,11 +9,11 @@ import { GithubCommitResponse } from "@/types/GithubCommitResponse";
 import { getLastRepoCommitUrl } from "@/utils/github";
 import { ProjectsContent } from "@/components/ProjectsPage/ProjectsContent";
 import { getReposLastCommits } from "@/services/github";
+import { ProjectLoader } from "@/components/ProjectLoader";
 
 export default async function ProjectsPage() {
   const projectsRepositories = projects.flatMap((project) => project.repositories.map((repo) => repo.url));
   const projectCommits: Record<string, GithubCommitResponse> = await getReposLastCommits(projectsRepositories);
-
   return (
     <div className="min-h-screen bg-background">
       <TopNav />

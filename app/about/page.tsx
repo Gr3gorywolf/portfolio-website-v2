@@ -23,6 +23,7 @@ import {
     Code,
     GraduationCap,
     User,
+    Instagram,
 } from "lucide-react";
 
 // Add import at the top
@@ -30,6 +31,7 @@ import { FeaturedProjectCard } from "@/components/FeaturedProjectCard";
 import { projects } from "@/data/projects";
 import { AnimatedWrapper } from "@/components/AnimatedWrapper";
 import { AnimatedStaggeredGrid } from "@/components/AnimatedStaggeredGrid";
+import { DiscordjsOriginal, DiscordjsOriginalWordmark, DiscordjsPlain } from "devicons-react";
 
 export default function AboutPage() {
     return (
@@ -64,24 +66,36 @@ export default function AboutPage() {
                                         <p className="text-xl text-accent-orange">{personalInfo.title}</p>
                                     </CardHeader>
                                     <CardContent className="space-y-2">
-                                        <div className="flex items-center gap-2">
+                                        <a
+                                            href={`mailto:${personalInfo.email}`}
+                                            target="_blank"
+                                            className="flex items-center gap-2"
+                                        >
                                             <Mail className="w-4 h-4 text-muted-foreground" />
                                             <span>{personalInfo.email}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
+                                        </a>
+                                        <a
+                                            href={`tel:${personalInfo.phone}`}
+                                            target="_blank"
+                                            className="flex items-center gap-2"
+                                        >
                                             <Phone className="w-4 h-4 text-muted-foreground" />
                                             <span>{personalInfo.phone}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
+                                        </a>
+                                        <a
+                                            href={`https://www.google.com/maps/search/?api=1&query=${personalInfo.location}`}
+                                            target="_blank"
+                                            className="flex items-center gap-2"
+                                        >
                                             <MapPin className="w-4 h-4 text-muted-foreground" />
                                             <span>{personalInfo.location}</span>
-                                        </div>
+                                        </a>
 
                                         <div className="flex gap-2 pt-4">
                                             <Button asChild className="bg-accent-orange hover:bg-accent-orange/90">
                                                 <Link href={personalInfo.cvUrl}>
                                                     <Download className="w-4 h-4 mr-2" />
-                                                    Download CV
+                                                    Download resume
                                                 </Link>
                                             </Button>
                                         </div>
@@ -115,6 +129,22 @@ export default function AboutPage() {
                                                     <Globe className="w-5 h-5" />
                                                 </Link>
                                             )}
+                                            {personalInfo.socialLinks.instagram && (
+                                                <Link
+                                                    href={personalInfo.socialLinks.instagram}
+                                                    className="text-muted-foreground hover:text-accent-orange"
+                                                >
+                                                    <Instagram className="w-5 h-5" />
+                                                </Link>
+                                            )}
+                                            {/* {personalInfo.socialLinks.discord && (
+                                                <Link
+                                                    href={personalInfo.socialLinks.discord}
+                                                    className="text-muted-foreground hover:text-accent-orange"
+                                                >
+                                                    <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" className="w-5 h-5" />
+                                                </Link>
+                                            )} */}
                                         </div>
                                     </CardContent>
                                 </Card>
@@ -146,11 +176,7 @@ export default function AboutPage() {
                             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-accent-orange"></div>
                             <div className="space-y-8">
                                 {experience.map((exp, index) => (
-                                    <AnimatedWrapper
-                                        key={exp.id}
-                                        animation="slide-right"
-                                        duration={600}
-                                    >
+                                    <AnimatedWrapper key={exp.id} animation="slide-right" duration={600}>
                                         <div key={exp.id} className="relative flex items-start gap-6">
                                             <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center relative z-10 border-4 border-accent-orange">
                                                 <Image
@@ -215,11 +241,7 @@ export default function AboutPage() {
                             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-accent-orange"></div>
                             <div className="space-y-8">
                                 {education.map((edu, index) => (
-                                    <AnimatedWrapper
-                                        key={edu.id}
-                                        animation="slide-right"
-                                        duration={600}
-                                    >
+                                    <AnimatedWrapper key={edu.id} animation="slide-right" duration={600}>
                                         <div key={edu.id} className="relative flex items-start gap-6">
                                             <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center relative z-10 border-4 border-accent-orange">
                                                 <Image
@@ -265,16 +287,12 @@ export default function AboutPage() {
                         {projects
                             .filter((project) => project.featured)
                             .map((project, index) => (
-                                <AnimatedWrapper
-                                    key={project.id}
-                                    animation="fade-up"
-                                    duration={600}
-                                >
+                                <AnimatedWrapper key={project.id} animation="fade-up" duration={600}>
                                     <FeaturedProjectCard project={project} />
                                 </AnimatedWrapper>
                             ))}
                     </div>
-                    <AnimatedWrapper animation="fade-up" >
+                    <AnimatedWrapper animation="fade-up">
                         <div className="text-center">
                             <Button asChild size="lg" className="bg-accent-orange hover:bg-accent-orange/90">
                                 <Link href="/projects">
@@ -293,11 +311,7 @@ export default function AboutPage() {
                     </AnimatedWrapper>
                     <div className="space-y-4">
                         {skillCategories.map((category, categoryIndex) => (
-                            <AnimatedWrapper
-                                key={categoryIndex}
-                                animation="fade-up"
-                                duration={600}
-                            >
+                            <AnimatedWrapper key={categoryIndex} animation="fade-up" duration={600}>
                                 <Card key={categoryIndex} className="overflow-hidden">
                                     <CardHeader className="py-3 px-4">
                                         <CardTitle className="text-base">{category.title}</CardTitle>

@@ -459,25 +459,5 @@ export const projects: Project[] = [
       "https://raw.githubusercontent.com/Gr3gorywolf/Multitube.android/master/docs/img/screenshots/7.jpeg"
     ],
     accentColor: "#d41c17"
-  },
-  {
-    id: "Mimicker",
-    title: "Mimicker",
-    description: "Application that allows you to run python scripts from a smartwatch with androidwear",
-    appIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
-    tags: ["web", "script"],
-    technologies: [
-      { name: "Flutter", devicon: "flutter" },
-      { name: "Kotlin", devicon: "kotlin" },
-    ],
-    repositories: [
-      {
-        isMain: true,
-        name: "Mimicker",
-        url: "https://github.com/Gr3gorywolf/Mimicker"
-      }
-    ],
-    gallery: [],
-    accentColor: "#ffffff"
-  },
+  }
 ]
