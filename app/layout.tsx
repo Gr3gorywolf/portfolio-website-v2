@@ -65,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="es" suppressHydrationWarning>
             <body className={inter.className}>
                 <GoogleAnalytics gaId="G-4EHV1ZWXWJ" />
+                <GoogleAnalytics gaId="G-TZQPG4VMHX" />
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
                     {children}
                 </ThemeProvider>
