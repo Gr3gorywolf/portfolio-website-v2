@@ -69,7 +69,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                 />
 
                 <div className="container max-w-6xl mx-auto px-4 py-8 pt-20">
-                    <AnimatedWrapper animation="slide-right" duration={500}>
+                    <AnimatedWrapper animation="fade-in" duration={500}>
                         <Button asChild variant="ghost" className="mb-6">
                             <Link href={fromAbout ? "/about#featured-projects" : "/projects"}>
                                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -80,7 +80,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
 
                     {/* Project Header Card */}
                     <section id="info">
-                        <AnimatedWrapper animation="fade-up">
+                        <AnimatedWrapper animation="slide-left">
                             <div className="mb-10" id="info">
                                 <ProjectDetailHeaderCard project={project} lastCommit={lastCommit} release={release} />
                             </div>
@@ -90,7 +90,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                     {project.demos && (
                         <section id="demo">
                             <div className="mb-8">
-                                <AnimatedWrapper animation="slide-right" duration={600}>
+                                <AnimatedWrapper animation="fade-up" duration={600}>
                                     <h2 className="text-2xl font-bold mb-4">Demos</h2>
                                 </AnimatedWrapper>
                                 <AnimatedStaggeredGrid
@@ -109,7 +109,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                     <section id="gallery">
                         {hasGallery && (
                             <>
-                                <AnimatedWrapper animation="slide-right" duration={600}>
+                                <AnimatedWrapper animation="fade-up" duration={600}>
                                     <h2 className="text-2xl font-bold mb-4">Gallery</h2>
                                 </AnimatedWrapper>
                                 <LightBoxGallery
@@ -124,7 +124,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
 
                     {/* Recent Commits - Order 3 on mobile, 2 on desktop */}
                     <section className="my-10" id="commits">
-                        <AnimatedWrapper animation="slide-right" duration={600}>
+                        <AnimatedWrapper animation="fade-up" duration={600}>
                             <h2 className="text-2xl font-bold mb-4">Recent Commits</h2>
                         </AnimatedWrapper>
                         <Card>
@@ -173,9 +173,11 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                         </Card>
                     </section>
                     <section id="readme">
-                        <AnimatedWrapper animation="fade-up">
-                            <div className="order-2 lg:order-3">
+                        <div className="order-2 lg:order-3">
+                            <AnimatedWrapper animation="fade-up">
                                 <h2 className="text-2xl font-bold mb-4">README</h2>
+                            </AnimatedWrapper>
+                            <AnimatedWrapper animation="slide-left">
                                 <Card>
                                     <CardContent className="p-6">
                                         {readmeUrl ? (
@@ -185,8 +187,8 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                                         )}
                                     </CardContent>
                                 </Card>
-                            </div>
-                        </AnimatedWrapper>
+                            </AnimatedWrapper>
+                        </div>
                     </section>
                 </div>
             </div>
