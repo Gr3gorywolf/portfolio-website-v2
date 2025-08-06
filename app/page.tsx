@@ -13,14 +13,14 @@ export default function HomePage() {
             <div className="container max-w-4xl mx-auto px-4">
                 <div className="text-center mb-12">
                     <div className="flex flex-row justify-center my-4">
-                        <AnimatedWrapper animation="stagger" delay={450}>
+                        <AnimatedWrapper animation="stagger" duration={600} delay={100}>
                             <div className="h-72 lg:h-[550px] w-72 lg:w-[550px]">
                                 <GregoryMainSVG />
                             </div>
                         </AnimatedWrapper>
                     </div>
                 </div>
-                <AnimatedWrapper animation="stagger" delay={100}>
+                <AnimatedWrapper animation="stagger" delay={600}>
                     <div className="flex flex-row justify-center gap-12">
                         <Link href="/about" className="group">
                             <Card className="h-full w-36 transition-all duration-300 hover:shadow-lg hover:scale-105 border-2 hover:border-accent-orange">
