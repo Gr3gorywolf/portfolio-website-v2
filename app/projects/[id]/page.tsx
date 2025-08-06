@@ -36,6 +36,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
     const commits = await getRepoCommits(mainRepo?.url || "");
     const release = mainRepo ? (await getRepoLastRelease(mainRepo.url)) ?? undefined : undefined;
     const lastCommit = commits?.[0];
+    const hasGallery = project?.gallery && project.gallery.length > 0;
 
     if (!project) {
         notFound();
@@ -59,7 +60,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                     items={[
                         navItem({ id: "info", label: "Info", icon: "info" }),
                         ...(project?.demos ? [navItem({ id: "demo", label: "Demo", icon: "showcase" })] : []),
-                        ...(project?.gallery ? [navItem({ id: "gallery", label: "Gallery", icon: "gallery" })] : []),
+                        ...(hasGallery ? [navItem({ id: "gallery", label: "Gallery", icon: "gallery" })] : []),
                         ...(project?.repositories
                             ? [navItem({ id: "commits", label: "Commits", icon: "commits" })]
                             : []),
@@ -78,18 +79,20 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                     </AnimatedWrapper>
 
                     {/* Project Header Card */}
-                    <AnimatedWrapper animation="fade-up">
-                        <div className="mb-10" id="info">
-                            <ProjectDetailHeaderCard project={project} lastCommit={lastCommit} release={release} />
-                        </div>
-                    </AnimatedWrapper>
+                    <section id="info">
+                        <AnimatedWrapper animation="fade-up">
+                            <div className="mb-10" id="info">
+                                <ProjectDetailHeaderCard project={project} lastCommit={lastCommit} release={release} />
+                            </div>
+                        </AnimatedWrapper>
+                    </section>
 
                     {project.demos && (
-                        <AnimatedWrapper animation="slide-right" delay={300} duration={600}>
+                        <section id="demo">
                             <div className="mb-8">
-                                <h2 className="text-2xl font-bold mb-4" id="demo">
-                                    Demos
-                                </h2>
+                                <AnimatedWrapper animation="slide-right" duration={600}>
+                                    <h2 className="text-2xl font-bold mb-4">Demos</h2>
+                                </AnimatedWrapper>
                                 <AnimatedStaggeredGrid
                                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                                     staggerDelay={100}
@@ -99,31 +102,35 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                                     ))}
                                 </AnimatedStaggeredGrid>
                             </div>
-                        </AnimatedWrapper>
+                        </section>
                     )}
 
                     {/* Gallery - Order 1 on mobile, 1 on desktop */}
-                    <AnimatedWrapper animation="slide-right" delay={300} duration={600}>
-                        <h2 className="text-2xl font-bold mb-4" id="gallery">
-                            Gallery
-                        </h2>
-                        <LightBoxGallery
-                            animated
-                            staggerDelay={100}
-                            gridClassName="grid grid:cols-1 md:grid-cols-2 gap-4"
-                            images={project.gallery}
-                        />
-                    </AnimatedWrapper>
+                    <section id="gallery">
+                        {hasGallery && (
+                            <>
+                                <AnimatedWrapper animation="slide-right" duration={600}>
+                                    <h2 className="text-2xl font-bold mb-4">Gallery</h2>
+                                </AnimatedWrapper>
+                                <LightBoxGallery
+                                    animated
+                                    staggerDelay={100}
+                                    gridClassName="grid grid:cols-1 md:grid-cols-2 gap-4"
+                                    images={project.gallery}
+                                />
+                            </>
+                        )}
+                    </section>
 
                     {/* Recent Commits - Order 3 on mobile, 2 on desktop */}
-                    <div className="my-10">
-                        <h2 className="text-2xl font-bold mb-4" id="commits">
-                            Recent Commits
-                        </h2>
+                    <section className="my-10" id="commits">
+                        <AnimatedWrapper animation="slide-right" duration={600}>
+                            <h2 className="text-2xl font-bold mb-4">Recent Commits</h2>
+                        </AnimatedWrapper>
                         <Card>
                             <CardContent className="p-4">
                                 {commits && (
-                                    <AnimatedStaggeredGrid className="space-y-4">
+                                    <AnimatedStaggeredGrid staggerDelay={50} className="space-y-4">
                                         {commits.map((commit, index) => (
                                             <Link
                                                 key={commit.sha}
@@ -164,23 +171,23 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                                 )}
                             </CardContent>
                         </Card>
-                    </div>
-
-                    {/* README - Full width, Order 2 on mobile, 3 on desktop */}
-                    <AnimatedWrapper animation="fade-up">
-                    <div className="order-2 lg:order-3" id="readme">
-                        <h2 className="text-2xl font-bold mb-4">README</h2>
-                        <Card>
-                            <CardContent className="p-6">
-                                {readmeUrl ? (
-                                    <MarkdownRenderer readmeUrl={readmeUrl} />
-                                ) : (
-                                    <p className="text-muted-foreground">No README available.</p>
-                                )}
-                            </CardContent>
-                        </Card>
-                    </div>
-                    </AnimatedWrapper>
+                    </section>
+                    <section id="readme">
+                        <AnimatedWrapper animation="fade-up">
+                            <div className="order-2 lg:order-3">
+                                <h2 className="text-2xl font-bold mb-4">README</h2>
+                                <Card>
+                                    <CardContent className="p-6">
+                                        {readmeUrl ? (
+                                            <MarkdownRenderer readmeUrl={readmeUrl} />
+                                        ) : (
+                                            <p className="text-muted-foreground">No README available.</p>
+                                        )}
+                                    </CardContent>
+                                </Card>
+                            </div>
+                        </AnimatedWrapper>
+                    </section>
                 </div>
             </div>
         </>

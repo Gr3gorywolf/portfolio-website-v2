@@ -23,9 +23,11 @@ export const LightBoxGallery = ({ images, gridClassName, imageClassName, animate
     const renderWrapper = (children: React.ReactNode[]) => {
         if (animated) {
             return (
-                <AnimatedStaggeredGrid className={`lightbox-gallery ${gridClassName}`} staggerDelay={staggerDelay}>
-                    {children}
-                </AnimatedStaggeredGrid>
+                <div className="lightbox-gallery">
+                    <AnimatedStaggeredGrid className={`${gridClassName}`} staggerDelay={staggerDelay}>
+                        {children}
+                    </AnimatedStaggeredGrid>
+                </div>
             );
         }
         return <div className={`lightbox-gallery ${gridClassName}`}>{children}</div>;

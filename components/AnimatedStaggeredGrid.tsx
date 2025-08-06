@@ -9,8 +9,8 @@ interface StaggeredGridProps {
   staggerDelay?: number
 }
 
-export function AnimatedStaggeredGrid({ children, className = "", staggerDelay = 75 }: StaggeredGridProps) {
-  const { ref, isInView } = useInView({ threshold: 0.1, triggerOnce: true })
+export function AnimatedStaggeredGrid({ children, className = "", staggerDelay = 25 }: StaggeredGridProps) {
+  const { ref, isInView } = useInView({ threshold: 0.03, triggerOnce: true })
 
   return (
     <div ref={ref} className={className}>

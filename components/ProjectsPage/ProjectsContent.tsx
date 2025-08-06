@@ -33,7 +33,7 @@ export const ProjectsContent: FC<Props> = ({ projects, projectCommits }) => {
                 </div>
                 </AnimatedWrapper>
             ) : (
-                <AnimatedStaggeredGrid className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={150}>
+                <AnimatedStaggeredGrid className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={65}>
                     {filteredProjects.map((project) => (
                         <ProjectCard
                             key={project.id}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/Button"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { createPortal } from "react-dom"
 
 interface LightboxProps {
   images: string[]
@@ -58,10 +59,11 @@ export function Lightbox({ images, initialIndex, isOpen, onClose }: LightboxProp
   const goToNext = () => {
     setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0))
   }
+  
 
   if (!isOpen) return null
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center">
       {/* Close button */}
       <Button
@@ -139,5 +141,5 @@ export function Lightbox({ images, initialIndex, isOpen, onClose }: LightboxProp
       {/* Background overlay */}
       <div className="absolute inset-0 -z-10" onClick={onClose} />
     </div>
-  )
+  , document.body)
 }

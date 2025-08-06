@@ -18,7 +18,7 @@ export function AnimatedWrapper({
   delay = 0,
   duration = 600,
 }: AnimatedWrapperProps) {
-  const { ref, isInView } = useInView({ threshold: 0.1, triggerOnce: true })
+  const { ref, isInView } = useInView({ threshold: 0.03, triggerOnce: true })
 
   const getAnimationClasses = () => {
     const baseClasses = "transition-all ease-out"
