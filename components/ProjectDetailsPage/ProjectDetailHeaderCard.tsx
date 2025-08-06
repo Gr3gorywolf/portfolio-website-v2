@@ -55,7 +55,7 @@ export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, releas
                     return <ProjectTag type={tag} key={index} />;
                   })}
                 </div>
-                <p className="text-muted-foreground text-md leading-relaxed">{project.description}</p>
+                <p className="text-muted-foreground text-md leading-relaxed ">{project.description}</p>
               </div>
             </div>
           </div>
@@ -141,8 +141,8 @@ export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, releas
                     <Link href={action.url} target="_blank">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       <div className="text-left w-full">
-                        <div className="font-medium">{action.title}</div>
-                        <p className="text-xs opacity-90 ">{action.description}</p>
+                        <div className="font-medium wrap-text">{action.title}</div>
+                        <p className="text-xs opacity-90 wrap-text">{action.description}</p>
                       </div>
                     </Link>
                   </Button>

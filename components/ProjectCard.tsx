@@ -39,7 +39,7 @@ export function ProjectCard({ project, lastCommit }: ProjectCardProps) {
               <div className="grid grid-rows-2 gap-1 max-h-48">
                 {project.gallery.slice(1, 3).map((image, index) => (
                   <div key={index} className="relative">
-                    <img src={image || "/placeholder.svg"} alt={`${project.title} preview ${index + 2}`} fill className="object-cover" sizes="(max-width: 768px) 25vw, 12.5vw" />
+                    <img src={image || "/placeholder.svg"} alt={`${project.title} preview ${index + 2}`} fill className="object-cover max-h-[94px] w-full" sizes="(max-width: 768px) 25vw, 12.5vw" />
                     {/* Overlay for additional images count */}
                     {index === 1 && project.gallery.length > 3 && (
                       <div className="absolute inset-0 bg-black/60 flex items-center justify-center">

@@ -73,7 +73,7 @@
 :root {
   --accent-orange: #ffffff;
   --accent-orange-dark: #ffffff;
-  --accent-orange-light: #cccccc ;
+  --accent-orange-light: #cccccc;
 }
 
 .accent-orange {
@@ -98,4 +98,10 @@
 
 ul::marker {
   content: "";
+}
+
+.wrap-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }

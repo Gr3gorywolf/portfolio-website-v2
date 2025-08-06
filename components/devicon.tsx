@@ -50,6 +50,9 @@ import {
   JenkinsOriginal,
   ReduxOriginal,
   YiiOriginal,
+  KotlinOriginal,
+  SassOriginal,
+  ElectronOriginal,
 } from "devicons-react";
 
 const iconMap = {
@@ -105,6 +108,9 @@ const iconMap = {
   redux: ReduxOriginal,
   yii: YiiOriginal,
   css3: Css3Original,
+  kotlin: KotlinOriginal,
+  sass:SassOriginal,
+  electron:ElectronOriginal,
   stripe: null,
   scrum: null,
   overwolf: null,
