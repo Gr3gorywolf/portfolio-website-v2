@@ -20,7 +20,9 @@ import { FloatingNav, FloatingNavItem } from "@/components/FloatingNav";
 import Head from "next/head";
 import { AccentColorChanger } from "@/components/AccentColorChanger";
 import { ProjectDetailDemoCard } from "@/components/ProjectDetailsPage/ProjectDetailDemoCard";
-import "./color-overrides.css"
+import "./color-overrides.css";
+import { AnimatedWrapper } from "@/components/AnimatedWrapper";
+import { AnimatedStaggeredGrid } from "@/components/AnimatedStaggeredGrid";
 
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
@@ -61,44 +63,57 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                         ...(project?.repositories
                             ? [navItem({ id: "commits", label: "Commits", icon: "commits" })]
                             : []),
-                        navItem({ id: "readme", label: "README", icon: "readme" })
+                        navItem({ id: "readme", label: "README", icon: "readme" }),
                     ]}
                 />
 
                 <div className="container max-w-6xl mx-auto px-4 py-8 pt-20">
-                    <Button asChild variant="ghost" className="mb-6">
-                        <Link href={fromAbout ? "/about#featured-projects" : "/projects"}>
-                            <ArrowLeft className="w-4 h-4 mr-2" />
-                            {fromAbout ? "Back to About Me" : "Back to Projects"}
-                        </Link>
-                    </Button>
+                    <AnimatedWrapper animation="slide-right" duration={500}>
+                        <Button asChild variant="ghost" className="mb-6">
+                            <Link href={fromAbout ? "/about#featured-projects" : "/projects"}>
+                                <ArrowLeft className="w-4 h-4 mr-2" />
+                                {fromAbout ? "Back to About Me" : "Back to Projects"}
+                            </Link>
+                        </Button>
+                    </AnimatedWrapper>
 
                     {/* Project Header Card */}
-                    <div className="mb-10" id="info">
-                        <ProjectDetailHeaderCard project={project} lastCommit={lastCommit} release={release} />
-                    </div>
+                    <AnimatedWrapper animation="fade-up">
+                        <div className="mb-10" id="info">
+                            <ProjectDetailHeaderCard project={project} lastCommit={lastCommit} release={release} />
+                        </div>
+                    </AnimatedWrapper>
 
                     {project.demos && (
-                        <div className="mb-8">
-                            <h2 className="text-2xl font-bold mb-4" id="demo">Demos</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {project.demos.map((demo) => (
-                                    <ProjectDetailDemoCard key={demo.url} demo={demo} />
-                                ))}
+                        <AnimatedWrapper animation="slide-right" delay={300} duration={600}>
+                            <div className="mb-8">
+                                <h2 className="text-2xl font-bold mb-4" id="demo">
+                                    Demos
+                                </h2>
+                                <AnimatedStaggeredGrid
+                                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                                    staggerDelay={100}
+                                >
+                                    {project.demos.map((demo) => (
+                                        <ProjectDetailDemoCard key={demo.url} demo={demo} />
+                                    ))}
+                                </AnimatedStaggeredGrid>
                             </div>
-                        </div>
+                        </AnimatedWrapper>
                     )}
 
                     {/* Gallery - Order 1 on mobile, 1 on desktop */}
-                    <div>
+                    <AnimatedWrapper animation="slide-right" delay={300} duration={600}>
                         <h2 className="text-2xl font-bold mb-4" id="gallery">
                             Gallery
                         </h2>
                         <LightBoxGallery
+                            animated
+                            staggerDelay={100}
                             gridClassName="grid grid:cols-1 md:grid-cols-2 gap-4"
                             images={project.gallery}
                         />
-                    </div>
+                    </AnimatedWrapper>
 
                     {/* Recent Commits - Order 3 on mobile, 2 on desktop */}
                     <div className="my-10">
@@ -107,9 +122,9 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                         </h2>
                         <Card>
                             <CardContent className="p-4">
-                                <div className="space-y-4">
-                                    {commits &&
-                                        commits.map((commit, index) => (
+                                {commits && (
+                                    <AnimatedStaggeredGrid className="space-y-4">
+                                        {commits.map((commit, index) => (
                                             <Link
                                                 key={commit.sha}
                                                 href={commit.html_url}
@@ -145,12 +160,14 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                                                 </div>
                                             </Link>
                                         ))}
-                                </div>
+                                    </AnimatedStaggeredGrid>
+                                )}
                             </CardContent>
                         </Card>
                     </div>
 
                     {/* README - Full width, Order 2 on mobile, 3 on desktop */}
+                    <AnimatedWrapper animation="fade-up">
                     <div className="order-2 lg:order-3" id="readme">
                         <h2 className="text-2xl font-bold mb-4">README</h2>
                         <Card>
@@ -163,6 +180,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                             </CardContent>
                         </Card>
                     </div>
+                    </AnimatedWrapper>
                 </div>
             </div>
         </>
