@@ -33,7 +33,6 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen bg-background">
             <TopNav />
-            <ThemeToggle />
             <FloatingNav
                 items={[
                     { id: "personal", label: "Personal", icon: "user" },
@@ -61,7 +60,7 @@ export default function AboutPage() {
                                     <CardTitle className="text-2xl">{personalInfo.name}</CardTitle>
                                     <p className="text-xl text-accent-orange">{personalInfo.title}</p>
                                 </CardHeader>
-                                <CardContent className="space-y-4">
+                                <CardContent className="space-y-2">
                                     <div className="flex items-center gap-2">
                                         <Mail className="w-4 h-4 text-muted-foreground" />
                                         <span>{personalInfo.email}</span>
@@ -163,7 +162,8 @@ export default function AboutPage() {
                                                 className="text-muted-foreground"
                                                 dangerouslySetInnerHTML={{ __html: exp.description }}
                                             ></p>
-                                            <ul className="list-disc list-inside mt-2 ml-1 space-y-1">
+
+                                            <ul className="list-disc list-inside ml-1 space-y-1">
                                                 {exp.responsabilities.map((responsability, index) => (
                                                     <li key={index} className="text-muted-foreground d-block">
                                                         {responsability}

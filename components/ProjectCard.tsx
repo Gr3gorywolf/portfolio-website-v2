@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Devicon } from "@/components/DevIcon";
 import type { Project } from "@/types/Portfolio";
-import { ExternalLink, Github, Tag } from "lucide-react";
+import { ArrowRight, ExternalLink, Github, Tag } from "lucide-react";
 import { PROJECT_TAGS } from "@/utils/constants";
 import { ProjectTag } from "./ProjectTag";
 import { GithubCommitResponse } from "@/types/GithubCommitResponse";

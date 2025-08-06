@@ -1,0 +1,35 @@
+#project-details nav.bg-background\/80{
+    background-color: color-mix(in lab, transparent 85%, var(--accent-orange));
+    border-bottom-color: color-mix(in lab, transparent 80%, var(--accent-orange));
+}
+
+#project-details .floating-nav-content {
+    background-color: color-mix(in lab, transparent 90%, var(--accent-orange));
+}
+
+#project-details .floating-nav-mobile-content {
+    background-color: color-mix(in lab, transparent 65%, var(--accent-orange));
+    border-color: color-mix(in lab, transparent 92%, var(--accent-orange));
+}
+
+#project-details #info .p-6.pb-4.border-b{
+    background-color: color-mix(in lab, transparent 92%, var(--accent-orange));
+}
+
+#project-details #info .project-tag{
+    background-color: color-mix(in lab, transparent 80%, var(--accent-orange));
+}
+
+#project-details #info .action-button{
+    background-color: color-mix(in lab, transparent 92%, var(--accent-orange));
+    border-color: color-mix(in lab, transparent 80%, var(--accent-orange));
+}
+
+#project-details .hover\:bg-muted\/90:hover{
+    background-color: color-mix(in lab, transparent 90%, var(--accent-orange));
+}
+
+#project-details .theme-toggle{
+    background-color: transparent;
+    border-color: transparent;
+}

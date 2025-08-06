@@ -19,11 +19,7 @@ export default async function ProjectsPage() {
       <TopNav />
       <ThemeToggle />
 
-      <div className="container max-w-6xl mx-auto px-4 py-8 pt-20">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">My Projects</h1>
-          <div className="w-24 h-1 bg-accent-orange mx-auto"></div>
-        </div>
+      <div className="container max-w-6xl mx-auto px-4 py-8 pt-16">
         <ProjectsContent projects={projects} projectCommits={projectCommits} />
       </div>
     </div>

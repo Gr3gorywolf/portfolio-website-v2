@@ -137,7 +137,7 @@ export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, releas
 
               <div className="space-y-3">
                 {project.actions?.map((action, index) => (
-                  <Button asChild variant="outline" className="w-full justify-start bg-transparent h-12">
+                  <Button asChild variant="outline" className="w-full justify-start bg-transparent h-12 action-button">
                     <Link href={action.url} target="_blank">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       <div className="text-left w-full">
@@ -148,7 +148,7 @@ export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, releas
                   </Button>
                 ))}
                 {project.liveUrl && (
-                  <Button asChild variant="outline" className="w-full justify-start bg-transparent h-12">
+                  <Button asChild variant="outline" className="w-full justify-start bg-transparent h-12 action-button">
                     <Link href={project.liveUrl} target="_blank">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       <div className="text-left w-full">
@@ -160,7 +160,7 @@ export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, releas
 
                 {/* Show GitHub button only if no subprojects */}
                 {!hasSubprojects && (
-                  <Button asChild variant="outline" className="w-full justify-start h-12 bg-transparent">
+                  <Button asChild variant="outline" className="w-full justify-start h-12 bg-transparent action-button">
                     <Link href={mainRepo.url} target="_blank">
                       <Github className="w-4 h-4 mr-3" />
                       <div className="text-left">

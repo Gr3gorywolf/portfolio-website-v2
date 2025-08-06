@@ -12,7 +12,7 @@ export const ProjectTag: FC<props> = ({ type, onClick }) => {
 
   const TagIcon = tag.icon || null;
   return (
-    <Badge onClick={onClick} variant="secondary" className="flex items-center gap-1">
+    <Badge onClick={onClick} variant="secondary" className="flex items-center gap-1 project-tag">
       {TagIcon && <TagIcon className="w-3 h-3" />}
       {tag.name}
     </Badge>

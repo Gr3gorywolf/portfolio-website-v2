@@ -20,6 +20,7 @@ import { FloatingNav, FloatingNavItem } from "@/components/FloatingNav";
 import Head from "next/head";
 import { AccentColorChanger } from "@/components/AccentColorChanger";
 import { ProjectDetailDemoCard } from "@/components/ProjectDetailsPage/ProjectDetailDemoCard";
+import "./color-overrides.css"
 
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
@@ -49,9 +50,8 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
 
     return (
         <>
-            <div className="min-h-screen bg-background">
+            <div id="project-details" className="min-h-screen bg-background">
                 <TopNav />
-                <ThemeToggle />
                 {project.accentColor && <AccentColorChanger accent={project.accentColor} />}
                 <FloatingNav
                     items={[
@@ -61,7 +61,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                         ...(project?.repositories
                             ? [navItem({ id: "commits", label: "Commits", icon: "commits" })]
                             : []),
-                        ...(project?.readmeUrl ? [navItem({ id: "readme", label: "README", icon: "readme" })] : []),
+                        navItem({ id: "readme", label: "README", icon: "readme" })
                     ]}
                 />
 
