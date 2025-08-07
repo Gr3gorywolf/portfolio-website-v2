@@ -32,8 +32,11 @@ import { projects } from "@/data/projects";
 import { AnimatedWrapper } from "@/components/AnimatedWrapper";
 import { AnimatedStaggeredGrid } from "@/components/AnimatedStaggeredGrid";
 import { DiscordjsOriginal, DiscordjsOriginalWordmark, DiscordjsPlain } from "devicons-react";
+import { useState } from "react";
+import { ContactFormButton } from "@/components/AboutPage/ContactFormButton";
 
 export default function AboutPage() {
+    
     return (
         <div className="min-h-screen bg-background">
             <TopNav />
@@ -98,6 +101,7 @@ export default function AboutPage() {
                                                     Download resume
                                                 </Link>
                                             </Button>
+                                           <ContactFormButton />
                                         </div>
 
                                         <div className="flex gap-4 pt-4">
@@ -173,12 +177,12 @@ export default function AboutPage() {
                     </AnimatedWrapper>
                     <AnimatedWrapper animation="fade-up" duration={700} delay={200}>
                         <div className="relative">
-                            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-accent-orange"></div>
+                            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-black/40  dark:bg-white"></div>
                             <div className="space-y-8">
                                 {experience.map((exp, index) => (
                                     <AnimatedWrapper key={exp.id} animation="slide-right" duration={600}>
                                         <div key={exp.id} className="relative flex items-start gap-6">
-                                            <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center relative z-10 border-4 border-accent-orange">
+                                            <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center relative z-10 border-4 border-black/40 dark:border-white">
                                                 <Image
                                                     src={exp.logo || "/placeholder.svg"}
                                                     alt={exp.company}
@@ -238,12 +242,12 @@ export default function AboutPage() {
                     </AnimatedWrapper>
                     <AnimatedWrapper animation="fade-up" duration={700} delay={200}>
                         <div className="relative">
-                            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-accent-orange"></div>
+                            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-black/40  dark:bg-white"></div>
                             <div className="space-y-8">
                                 {education.map((edu, index) => (
                                     <AnimatedWrapper key={edu.id} animation="slide-right" duration={600}>
                                         <div key={edu.id} className="relative flex items-start gap-6">
-                                            <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center relative z-10 border-4 border-accent-orange">
+                                            <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center relative z-10 border-4 border-black/40 dark:border-white">
                                                 <Image
                                                     src={edu.logo || "/placeholder.svg"}
                                                     alt={edu.institution}

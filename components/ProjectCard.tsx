@@ -141,8 +141,8 @@ export function ProjectCard({ project, lastCommit }: ProjectCardProps) {
             "mt-auto": !lastCommit,
           })}
         >
-          <Button asChild size="sm" className="flex-1">
-            <Link href={`/projects/${project.id}`}>View Details</Link>
+          <Button asChild size="sm" variant="noir" className="  flex-1">
+            <Link href={`/projects/${project.id}`} >View Details</Link>
           </Button>
 
           {/* Show GitHub button only if no subprojects */}
