@@ -31,7 +31,7 @@ export function ProjectCard({ project, lastCommit }: ProjectCardProps) {
           <div className={`grid ${project.gallery.length >= 2 ? "grid-cols-2" : "grid-cols-1"} h-full gap-1`}>
             {/* Main image - takes left half */}
             <div className="relative">
-              <img src={project.gallery[0] || "/placeholder.svg"} alt={`${project.title} preview`} className={`object-cover h-full max-h-48 ${project.gallery.length === 1 ? "w-full" : ""}`} sizes="(max-width: 768px) 50vw, 25vw" />
+              <img src={project.gallery[0] || "/placeholder.svg"} alt={`${project.title} preview`} className={`object-cover h-full max-h-48 w-full`} sizes="(max-width: 768px) 50vw, 25vw" />
             </div>
 
             {/* Secondary images - right half */}

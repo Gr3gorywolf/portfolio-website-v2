@@ -36,7 +36,6 @@ import { useState } from "react";
 import { ContactFormButton } from "@/components/AboutPage/ContactFormButton";
 
 export default function AboutPage() {
-    
     return (
         <div className="min-h-screen bg-background">
             <TopNav />
@@ -96,7 +95,7 @@ export default function AboutPage() {
 
                                         <div className="flex gap-2 pt-4">
                                             <Button asChild className="bg-accent-orange hover:bg-accent-orange/90">
-                                                <Link href={personalInfo.cvUrl}>
+                                                <Link href={"/api/download-pdf"} target="_blank">
                                                     <Download className="w-4 h-4 mr-2" />
                                                     Download resume
                                                 </Link>
