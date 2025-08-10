@@ -61,7 +61,7 @@ export function MarkdownRenderer({ readmeUrl }: MarkdownRendererProps) {
     <div className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-code:text-accent-orange prose-pre:bg-muted prose-pre:border">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight, rehypeRaw]} // Added rehypeRaw for HTML support
+        rehypePlugins={[rehypeHighlight, rehypeRaw]}
         components={{
           h1: ({ children, style, ...props }) => <h1 style={style} {...props} className="text-2xl font-bold mb-4 text-foreground">{children}</h1>,
           h2: ({ children, style, ...props }) => <h2 style={style} {...props} className="text-xl font-semibold mb-3 text-foreground">{children}</h2>,
@@ -107,7 +107,6 @@ export function MarkdownRenderer({ readmeUrl }: MarkdownRendererProps) {
           ),
           td: ({ children, style, ...props }) => <td style={style} {...props} className="border border-muted px-4 py-2 text-muted-foreground">{children}</td>,
           hr: ({ style, ...props }) => <hr style={style} {...props} className="border-muted my-4" />,
-          // Support for HTML elements
           div: ({ children, style, ...props }) => <div style={style} {...props}>{children}</div>,
           span: ({ children, style, ...props }) => <span style={style} {...props}>{children}</span>,
           strong: ({ children, style, ...props }) => <strong style={style} {...props} className="font-bold text-foreground">{children}</strong>,

@@ -1,6 +1,39 @@
 import type { Project } from "@/types/Portfolio"
 
 export const projects: Project[] = [
+   {
+    id: "portfolio-website-v2",
+    title: "Portfolio website V2",
+    description: "Second version of my personal portfolio, built with Next.js and Tailwind CSS. This website showcases my work and skills.",
+    appIcon: "/img/face.png",
+    tags: ["web"],
+    technologies: [
+      { name: "NextJS", devicon: "nextjs" },
+      { name: "Tailwind CSS", devicon: "tailwindcss" },
+      { name: "TypeScript", devicon: "typescript" },
+      { name: "Node.js", devicon: "nodejs" }
+    ],
+    repositories: [
+      {
+        isMain: true,
+        name: "Portfolio website V2",
+        url: "https://github.com/Gr3gorywolf/portfolio-website-v2"
+      }
+    ],
+    liveUrl: "https://gregoryc.dev",
+    gallery: [
+      "/projects-assets/portfolio-website-v2/image-1.png",
+      "/projects-assets/portfolio-website-v2/image-2.png",
+      "/projects-assets/portfolio-website-v2/image-3.png",
+      "/projects-assets/portfolio-website-v2/image-4.png",
+      "/projects-assets/portfolio-website-v2/image-5.png",
+      "/projects-assets/portfolio-website-v2/image-6.png",
+      "/projects-assets/portfolio-website-v2/image-7.png",
+      "/projects-assets/portfolio-website-v2/image-8.png"
+    ],
+    featured: false,
+    accentColor: "#ffffff"
+  },
   {
     id: "refugio-musical",
     title: "Refugio Musical",

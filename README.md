@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Portfolio Website v2
 
-First, run the development server:
+Second version of my personal portfolio, built with **Next.js** and **Tailwind CSS**.
+Live site: [gregoryc.dev](https://gregoryc.dev/) btw, you can see the details of this project inside the portfolio since this is also a personal project (Projectseption) [gregoryc.dev/projects/portfolio-website-v2](https://gregoryc.dev/projects/portfolio-website-v2)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+## 🌟 Features
+
+
+- 🖼 **Masonry Grid**: Projects display an image gallery in a Pinterest-like masonry grid layout.
+- 🎨 **Adaptive Colors**: Each project has its own color theme applied to multiple parts of its detail view UI.
+- 📦 **Scalable & Typed**: All personal information and project data are centralized in one place with strong TypeScript typing.
+- ⚡ High performance using **Next.js** (App Router, image optimization, SSR/SSG).
+- 🎨 Modern, fully responsive styling with **Tailwind CSS**.
+- 🧩 Modular architecture with `app`, `components`, `hooks`, `data` and more.
+- 🚀 Continuous deployment with **Vercel**.
+
+---
+
+## 📂 Project Structure
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+├── app/               # Main routes and pages
+├── components/        # Reusable UI components
+├── data/              # Static data (e.g., projects)
+├── hooks/             # Custom React hooks
+├── lib/, services/, utils/  # API calls, helpers, utilities
+├── public/            # Static assets (images, favicons)
+├── types/             # Global TypeScript definitions
+├── next.config.mjs
+├── tailwind.config.js
+├── package.json
+├── README.md
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+````
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠 Installation & Development
 
-To learn more about Next.js, take a look at the following resources:
+Clone the repository and install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git clone https://github.com/Gr3gorywolf/portfolio-website-v2.git
+cd portfolio-website-v2
+npm install    # or yarn / pnpm
+npm run dev    # start development server
+````
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open `http://localhost:3000` in your browser.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📜 Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Description                        |
+| ------- | ---------------------------------- |
+| `dev`   | Run development server             |
+| `build` | Create production build            |
+| `start` | Serve optimized production build   |
+| `lint`  | Run ESLint for code quality checks |
+
+---
+
+## 🚀 Deployment
+
+The site is automatically deployed to **Vercel** on every push.
+It uses `next/image` optimization, static routes, and the Next.js App Router.
+

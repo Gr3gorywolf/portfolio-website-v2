@@ -116,8 +116,6 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                                 <MasonryGallery
                                     images={project.gallery}
                                     altPrefix={`${project.title} screenshot`}
-                                    columns={{ base: 1, sm: 2, lg: 3 }}
-                                    gap={4}
                                     className="w-full"
                                 />
                             </>
