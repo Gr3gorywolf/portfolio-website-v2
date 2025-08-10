@@ -24,6 +24,7 @@ import "./color-overrides.css";
 import { AnimatedWrapper } from "@/components/AnimatedWrapper";
 import { AnimatedStaggeredGrid } from "@/components/AnimatedStaggeredGrid";
 import { ProjectLoader } from "@/components/ProjectLoader";
+import { MasonryGallery } from "@/components/MasonryGallery";
 
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
@@ -50,7 +51,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
         console.error("Error generating README URL:", error);
         readmeUrl = "";
     }
-    const navItem = (item: FloatingNavItem): FloatingNavItem => item; 
+    const navItem = (item: FloatingNavItem): FloatingNavItem => item;
     return (
         <>
             <div id="project-details" className="min-h-screen bg-background">
@@ -112,11 +113,12 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                                 <AnimatedWrapper animation="fade-up" duration={600}>
                                     <h2 className="text-2xl font-bold mb-4">Gallery</h2>
                                 </AnimatedWrapper>
-                                <LightBoxGallery
-                                    animated
-                                    staggerDelay={100}
-                                    gridClassName="grid grid:cols-1 md:grid-cols-2 gap-4"
+                                <MasonryGallery
                                     images={project.gallery}
+                                    altPrefix={`${project.title} screenshot`}
+                                    columns={{ base: 1, sm: 2, lg: 3 }}
+                                    gap={4}
+                                    className="w-full"
                                 />
                             </>
                         )}
