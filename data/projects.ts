@@ -204,8 +204,8 @@ export const projects: Project[] = [
     tags: ["web"],
     technologies: [
       { name: "Node.js", devicon: "nodejs" },
-      { name: "Next.js", devicon: "nextjs" },
-      { name: "Typescript", devicon: "typescript" },
+      { name: "NextJS", devicon: "nextjs" },
+      { name: "TypeScript", devicon: "typescript" },
       { name: "Tailwind CSS", devicon: "tailwindcss" },
     ],
     repositories: [
@@ -390,7 +390,7 @@ export const projects: Project[] = [
     tags: ["mobile", "web"],
     technologies: [
       { name: "C#", devicon: "csharp" },
-      { name: "Xamarin", devicon: "xamarin" },
+      { name: "Xamarin.Android", devicon: "xamarin" },
       { name: "Firebase", devicon: "firebase" },
       { name: "Angular", devicon: "angular" },
       { name: "TypeScript", devicon: "typescript" },

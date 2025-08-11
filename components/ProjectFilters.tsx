@@ -148,7 +148,7 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
                                             : ""
                                     }`}
                                 >
-                                    <Devicon name={tech.devicon} size={14} />
+                                    <Devicon name={tech.devicon} whiteBackgroundWhenBlack={!selectedTechnologies.includes(tech.name)} size={14} />
                                     {tech.name}
                                 </Button>
                             ))}
