@@ -51,6 +51,7 @@ export const projects: Project[] = [
       {
         isMain: true,
         name: "Refugio Musical",
+        mainBranch:"main",
         url: "https://github.com/Gr3gorywolf/refugio-musical"
       }
     ],
@@ -69,7 +70,7 @@ export const projects: Project[] = [
     appIcon: "https://raw.githubusercontent.com/Gr3gorywolf/HardWatch-client/refs/heads/main/icon.ico",
     tags: ["web", "script", "backend", "mobile"],
     technologies: [
-      { name: "NextJS", devicon: "nextjs" },
+      { name: "React", devicon: "react" },
       { name: "Tailwind CSS", devicon: "tailwindcss" },
       { name: "TypeScript", devicon: "typescript" },
       { name: "Node.js", devicon: "nodejs" },
@@ -80,6 +81,7 @@ export const projects: Project[] = [
       {
         isMain: true,
         name: "HardWatch Client",
+        mainBranch: "main",
         url: "https://github.com/Gr3gorywolf/HardWatch-client"
       },
       {
@@ -141,6 +143,7 @@ export const projects: Project[] = [
       {
         isMain: true,
         name: "Decky Script Runner",
+        mainBranch: "main",
         url: "https://github.com/Gr3gorywolf/decky-script-runner"
       }
     ],
@@ -165,6 +168,7 @@ export const projects: Project[] = [
       {
         isMain: true,
         name: "ScrapMancer",
+        mainBranch: "main",
         url: "https://github.com/Gr3gorywolf/ScrapMancer"
       }
     ],
@@ -185,6 +189,7 @@ export const projects: Project[] = [
       {
         isMain: true,
         name: "Batocera Wine Manager",
+        mainBranch: "main",
         url: "https://github.com/Gr3gorywolf/batocera_wine_manager"
       }
     ],
@@ -207,6 +212,7 @@ export const projects: Project[] = [
       {
         isMain: true,
         name: "Personal Links",
+        mainBranch: "main",
         url: "https://github.com/Gr3gorywolf/personal-links"
       }
     ],
@@ -250,6 +256,7 @@ export const projects: Project[] = [
       {
         isMain: true,
         name: "Flutter Google Message API",
+        mainBranch: "main",
         url: "https://github.com/Gr3gorywolf/flutter-google-message-api"
       }
     ],

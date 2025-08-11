@@ -18,6 +18,24 @@ export function MarkdownRenderer({ readmeUrl }: MarkdownRendererProps) {
 
   useEffect(() => {
     const fetchReadme = async () => {
+    const cacheKey = `markdown-cache:${readmeUrl}`
+    const cache = localStorage.getItem(cacheKey)
+    let cached: { content: string; timestamp: number } | null = null
+
+    if (cache) {
+      try {
+        cached = JSON.parse(cache)
+      } catch {
+        cached = null
+      }
+    }
+
+    const now = Date.now()
+    if (cached && now - cached.timestamp < 60 * 60 * 1000) {
+      setContent(cached.content)
+      setLoading(false)
+      return
+    }
       try {
         setLoading(true)
         setError(null)
@@ -28,6 +46,7 @@ export function MarkdownRenderer({ readmeUrl }: MarkdownRendererProps) {
         }
 
         const text = await response.text()
+        localStorage.setItem(cacheKey, JSON.stringify({ content: text, timestamp: now }))
         setContent(text)
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load README")

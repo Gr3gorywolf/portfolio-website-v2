@@ -12,7 +12,7 @@ import { projects } from "@/data/projects";
 import { getRepoReadmeUrl } from "@/utils/github";
 import { ArrowLeft } from "lucide-react";
 import { LightBoxGallery } from "@/components/LightBoxGallery";
-import { getReposLastCommits, getRepoCommits, getRepoLastRelease } from "@/services/github";
+import { getRepoCommits, getRepoLastRelease } from "@/services/github";
 import { humanReadableDate } from "@/utils/dates";
 import { getGravatarUrl } from "@/utils/images";
 import { ProjectDetailHeaderCard } from "@/components/ProjectDetailsPage/ProjectDetailHeaderCard";
@@ -44,13 +44,16 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
         notFound();
     }
 
-    let readmeUrl: string;
-    try {
-        readmeUrl = getRepoReadmeUrl(project);
-    } catch (error) {
-        console.error("Error generating README URL:", error);
-        readmeUrl = "";
-    }
+    const getReadmeUrl = () => {
+        let readmeUrl: string;
+        try {
+            readmeUrl = getRepoReadmeUrl(project);
+        } catch (error) {
+            console.error("Error generating README URL:", error);
+            readmeUrl = "";
+        }
+        return readmeUrl;
+    };
     const navItem = (item: FloatingNavItem): FloatingNavItem => item;
     return (
         <>
@@ -180,8 +183,8 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                             <AnimatedWrapper animation="slide-left">
                                 <Card>
                                     <CardContent className="p-6">
-                                        {readmeUrl ? (
-                                            <MarkdownRenderer readmeUrl={readmeUrl} />
+                                        {getReadmeUrl() ? (
+                                            <MarkdownRenderer readmeUrl={getReadmeUrl()} />
                                         ) : (
                                             <p className="text-muted-foreground">No README available.</p>
                                         )}

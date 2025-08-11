@@ -28,15 +28,13 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
 
     return (
         <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group relative">
-            {/* Changed grid proportions: 35% image, 65% content */}
             <div className="grid md:grid-cols-[35%_65%] h-full relative z-10">
-                {/* Left side - Preview Image (35%) */}
                 <div className="relative h-48 md:h-full bg-muted/20">
                     {previewImage ? (
                         <img
                             src={previewImage || "/placeholder.svg"}
                             alt={`${project.title} preview`}
-                            className="object-cover  h-full max-h-60 w-full"
+                            className="object-cover  h-full max-h-80 w-full"
                             sizes="(max-width: 768px) 100vw, 35vw"
                         />
                     ) : (
@@ -57,10 +55,8 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
                     )}
                 </div>
 
-                {/* Right side - Project Info (65%) */}
                 <CardContent className="p-4 md:p-6 flex flex-col justify-between">
                     <div>
-                        {/* Header with icon and title */}
                         <div className="flex items-start gap-3 mb-3">
                             <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                                 <img
@@ -73,7 +69,6 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <h3 className="font-semibold text-lg leading-tight mb-1">{project.title}</h3>
-                                {/* Project Type */}
                                 <div className="flex flex-wrap gap-1">
                                     {project.tags.map((tag, index) => {
                                         return <ProjectTag key={index} type={tag} />;

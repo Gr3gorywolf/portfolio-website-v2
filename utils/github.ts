@@ -10,7 +10,7 @@ function getRepoInfo(repoUrl: string) {
   return { username, repoName: cleanRepoName }
 }
 
-export function getRepoRawUrl(repoUrl: string, branch = "main", filePath = "README.md") {
+export function getRepoRawUrl(repoUrl: string, branch = "master", filePath = "README.md") {
   const { username, repoName } = getRepoInfo(repoUrl) || {};
   if (!username) {
     return null;
@@ -36,7 +36,7 @@ export function getRepoReadmeUrl(project: {
 
 export function getLastRepoCommitUrl(
   repositoryUrl: string,
-  branch = "main"
+  branch = "master"
 ): string {
   const { username, repoName } = getRepoInfo(repositoryUrl) || {};
   if (!username || !repoName) {
@@ -49,7 +49,7 @@ export function getLastRepoCommitUrl(
 
 
 export function getRepoCommitsUrl(
-  repositoryUrl: string,
+  repositoryUrl: string
 ): string {
   const { username, repoName } = getRepoInfo(repositoryUrl) || {};
   if (!username || !repoName) {

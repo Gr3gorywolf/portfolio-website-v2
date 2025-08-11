@@ -1,12 +1,12 @@
 import { GithubCommitResponse } from "@/types/GithubCommitResponse";
 import { GithubReleaseResponse } from "@/types/GithubReleaseResponse";
 import { getLastRepoCommitUrl, getRepoCommitsUrl, getRepoLastReleaseUrl } from "@/utils/github";
-export const getReposLastCommits = async (repos: string[]) => {
+export const getReposLastCommits = async (repos: {repoUrl:string, branch:string}[]) => {
     const commits: Record<string, GithubCommitResponse> = {};
 
     const results = await Promise.allSettled(
         repos.map(async (repo) => {
-            const commitUrl = getLastRepoCommitUrl(repo);
+            const commitUrl = getLastRepoCommitUrl(repo.repoUrl, repo.branch);
             try {
                 const response = await fetch(commitUrl, {
                     next: { revalidate: 3600 }
@@ -26,7 +26,7 @@ export const getReposLastCommits = async (repos: string[]) => {
     for (const result of results) {
         if (result.status === "fulfilled" && result.value) {
             const { repo, data } = result.value;
-            commits[repo] = data;
+            commits[repo.repoUrl] = data;
         }
     }
 

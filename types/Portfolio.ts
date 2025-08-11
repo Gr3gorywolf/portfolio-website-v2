@@ -99,6 +99,7 @@ export interface Repository {
   name: string
   url: string
   isMain?: boolean
+  mainBranch?: string
 }
 
 export interface GitHubCommit {
