@@ -14,7 +14,7 @@ export default function HomePage() {
                 <div className="text-center ">
                     <div className="flex flex-row justify-center my-4">
                         <AnimatedWrapper animation="stagger" duration={600} delay={100}>
-                            <div className="h-72 lg:h-[450px] lg:w-[450px] xl:h-[550px] xl:w-[550px] w-72  ">
+                            <div className="size-72 [@media_(max-height:768px)]:size-64 lg:h-[450px] lg:w-[450px] xl:h-[550px] xl:w-[550px]">
                                 <GregoryMainSVG />
                             </div>
                         </AnimatedWrapper>

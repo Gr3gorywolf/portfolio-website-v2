@@ -9,7 +9,7 @@ export const ContactFormButton = () => {
     return (
         <>
             <Button variant="outline" onClick={() => setIsContactModalOpen(true)}>
-                <Mail className="w-4 h-4 mr-2" />
+                <Mail className="w-3 h-3 mr-1" />
                 Contact Me
             </Button>
             <ContactFormModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />

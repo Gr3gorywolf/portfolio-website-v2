@@ -53,7 +53,7 @@ export default function AboutPage() {
                 {/* Personal Info Section */}
                 <section id="personal" className="mb-16">
                     <AnimatedWrapper animation="fade-up">
-                        <div className="grid lg:grid-cols-3 gap-8">
+                        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             <div className="flex justify-center lg:justify-start">
                                 <img
                                     src={personalInfo.image || "/placeholder.svg"}
@@ -93,10 +93,10 @@ export default function AboutPage() {
                                             <span>{personalInfo.location}</span>
                                         </a>
 
-                                        <div className="flex gap-2 pt-4">
+                                        <div className="flex flex-col gap-4 pt-4 lg:flex-row lg:gap-2 ">
                                             <Button asChild className="bg-accent-orange hover:bg-accent-orange/90">
                                                 <Link href={"/api/download-pdf"} target="_blank">
-                                                    <Download className="w-4 h-4 mr-2" />
+                                                    <Download className="w-3 h-3 mr-1" />
                                                     Download resume
                                                 </Link>
                                             </Button>
