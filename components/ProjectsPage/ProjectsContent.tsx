@@ -2,24 +2,22 @@
 import { projects } from "@/data/projects";
 import { GithubCommitResponse } from "@/types/GithubCommitResponse";
 import { Project } from "@/types/Portfolio";
-import { getLastRepoCommitUrl } from "@/utils/github";
+import { getLastRepoCommitUrl, getProjectMainRepoUrl } from "@/utils/github";
 import { FC, useState } from "react";
 import { ProjectCard } from "../ProjectCard";
 import { ProjectFilters } from "../ProjectFilters";
 import { AnimatedWrapper } from "../AnimatedWrapper";
 import { AnimatedStaggeredGrid } from "../AnimatedStaggeredGrid";
+import { GithubRepoStatsResponse } from "@/types/GithubRepoStatsResponse";
 
 interface Props {
     projects: Project[];
     projectCommits?: Record<string, GithubCommitResponse>;
+    projectStats?: Record<string, GithubRepoStatsResponse>;
 }
 
-export const ProjectsContent: FC<Props> = ({ projects, projectCommits }) => {
-    const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
-    const getProjectMainRepoUrl = (project: Project): string => {
-        const mainRepo = project.repositories.find((repo) => repo.isMain);
-        return mainRepo ? mainRepo.url : "";
-    };
+export const ProjectsContent: FC<Props> = ({ projects, projectCommits, projectStats }) => {
+    const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects); 
     return (
         <>
             <AnimatedWrapper animation="fade-up" delay={200} duration={600}>
@@ -39,6 +37,7 @@ export const ProjectsContent: FC<Props> = ({ projects, projectCommits }) => {
                             key={project.id}
                             project={project}
                             lastCommit={projectCommits?.[getProjectMainRepoUrl(project)]}
+                            stats={projectStats?.[getProjectMainRepoUrl(project)]}
                         />
                     ))}
                 </AnimatedStaggeredGrid>

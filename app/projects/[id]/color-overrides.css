@@ -12,6 +12,11 @@
     border-color: color-mix(in lab, transparent 92%, var(--accent-orange));
 }
 
+#project-details .project-stats svg {
+    fill: var(--accent-orange);
+    color: var(--accent-orange);
+}
+
 #project-details #info .p-6.pb-4.border-b{
     background-color: color-mix(in lab, transparent 92%, var(--accent-orange));
 }

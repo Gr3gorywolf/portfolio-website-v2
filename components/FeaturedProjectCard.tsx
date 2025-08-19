@@ -9,6 +9,8 @@ import { Devicon } from "@/components/DevIcon";
 import type { Project } from "@/types/Portfolio";
 import { ExternalLink, Github, Globe, Smartphone, Server, Terminal, ArrowRight } from "lucide-react";
 import { ProjectTag } from "./ProjectTag";
+import { GithubRepoStatsResponse } from "@/types/GithubRepoStatsResponse";
+import { GitHubStats } from "./GithubStats";
 
 const tagIconMap: { [key: string]: any } = {
     Globe,
@@ -19,9 +21,10 @@ const tagIconMap: { [key: string]: any } = {
 
 interface FeaturedProjectCardProps {
     project: Project;
+    stats?: GithubRepoStatsResponse;
 }
 
-export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
+export function FeaturedProjectCard({ project, stats }: FeaturedProjectCardProps) {
     const hasSubprojects = project.repositories && project.repositories.length > 1;
     const mainRepo = project.repositories.find((repo) => repo.isMain) || project.repositories[0];
     const previewImage = project.gallery && project.gallery.length > 0 ? project.gallery[0] : null;
@@ -74,6 +77,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
                                         return <ProjectTag key={index} type={tag} />;
                                     })}
                                 </div>
+                                {stats && <GitHubStats stats={stats} variant="compact"/>}
                             </div>
                         </div>
                         <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{project.description}</p>

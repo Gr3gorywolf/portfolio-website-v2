@@ -12,14 +12,17 @@ import { getGravatarUrl } from "@/utils/images";
 import { truncateString } from "@/utils/string";
 import Link from "next/link";
 import { DateTime } from "luxon";
+import { GitHubStats } from "../GithubStats";
+import { GithubRepoStatsResponse } from "@/types/GithubRepoStatsResponse";
 
 interface Props {
     project: Project;
     lastCommit?: GithubCommitResponse;
     release?: GithubReleaseResponse;
+    stats?: GithubRepoStatsResponse;
 }
 
-export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, release }) => {
+export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, release, stats }) => {
     const hasSubprojects = project.repositories && project.repositories.length > 1;
     const mainRepo = project.repositories.find((repo) => repo.isMain) || project.repositories[0];
     const getProjectStatus = () => {
@@ -62,6 +65,7 @@ export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, releas
                                     })}
                                 </div>
                                 <p className="text-muted-foreground text-md leading-relaxed ">{project.description}</p>
+                                {stats && <GitHubStats stats={stats} variant="compact" className="project-stats" />}
                             </div>
                         </div>
                     </div>

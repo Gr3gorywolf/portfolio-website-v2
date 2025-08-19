@@ -1,7 +1,9 @@
 import { GithubCommitResponse } from "@/types/GithubCommitResponse";
 import { GithubReleaseResponse } from "@/types/GithubReleaseResponse";
-import { getLastRepoCommitUrl, getRepoCommitsUrl, getRepoLastReleaseUrl } from "@/utils/github";
-export const getReposLastCommits = async (repos: {repoUrl:string, branch:string}[]) => {
+import { GithubRepoStatsResponse } from "@/types/GithubRepoStatsResponse";
+import { Project } from "@/types/Portfolio";
+import { getLastRepoCommitUrl, getProjectMainRepoUrl, getRepoCommitsUrl, getRepoLastReleaseUrl, getRepoStatsUrl } from "@/utils/github";
+export const getReposLastCommits = async (repos: { repoUrl: string, branch: string }[]) => {
     const commits: Record<string, GithubCommitResponse> = {};
 
     const results = await Promise.allSettled(
@@ -33,6 +35,23 @@ export const getReposLastCommits = async (repos: {repoUrl:string, branch:string}
     return commits;
 }
 
+
+export const getReposStats = async (projects: Project[]) => {
+    const stats: Record<string, GithubRepoStatsResponse> = {};
+    await Promise.all(
+        projects.map(async (project) => {
+            const repoUrl = getProjectMainRepoUrl(project);
+            if (repoUrl) {
+                const repoStats = await getRepoStats(repoUrl);
+                if (repoStats) {
+                    stats[repoUrl] = repoStats;
+                }
+            }
+        })
+    );
+    return stats;
+};
+
 export const getRepoCommits = async (repo: string) => {
     const commitsUrl = getRepoCommitsUrl(repo);
     try {
@@ -60,6 +79,24 @@ export const getRepoLastRelease = async (repo: string) => {
             throw new Error(`Failed to fetch releases for ${repo}`);
         }
         const data: GithubReleaseResponse = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+
+export const getRepoStats = async (repo: string) => {
+    const statsUrl = getRepoStatsUrl(repo);
+    try {
+        const response = await fetch(statsUrl, {
+            next: { revalidate: 3600 }
+        });
+        if (!response.ok) {
+            throw new Error(`Failed to fetch stats for ${repo}`);
+        }
+        const data: GithubRepoStatsResponse = await response.json();
         return data;
     } catch (error) {
         console.error(error);

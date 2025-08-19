@@ -12,7 +12,7 @@ import { projects } from "@/data/projects";
 import { getRepoReadmeUrl } from "@/utils/github";
 import { ArrowLeft } from "lucide-react";
 import { LightBoxGallery } from "@/components/LightBoxGallery";
-import { getRepoCommits, getRepoLastRelease } from "@/services/github";
+import { getRepoCommits, getRepoLastRelease, getRepoStats } from "@/services/github";
 import { humanReadableDate } from "@/utils/dates";
 import { getGravatarUrl } from "@/utils/images";
 import { ProjectDetailHeaderCard } from "@/components/ProjectDetailsPage/ProjectDetailHeaderCard";
@@ -37,6 +37,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
     const mainRepo = project?.repositories.find((repo) => repo.isMain) || project?.repositories[0];
     const commits = await getRepoCommits(mainRepo?.url || "");
     const release = mainRepo ? (await getRepoLastRelease(mainRepo.url)) ?? undefined : undefined;
+    const stats = mainRepo ? (await getRepoStats(mainRepo.url)) ?? undefined : undefined;
     const lastCommit = commits?.[0];
     const hasGallery = project?.gallery && project.gallery.length > 0;
 
@@ -86,7 +87,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                     <section id="info">
                         <AnimatedWrapper animation="slide-left">
                             <div className="mb-10" id="info">
-                                <ProjectDetailHeaderCard project={project} lastCommit={lastCommit} release={release} />
+                                <ProjectDetailHeaderCard project={project} lastCommit={lastCommit} release={release} stats={stats} />
                             </div>
                         </AnimatedWrapper>
                     </section>

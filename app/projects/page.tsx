@@ -8,21 +8,23 @@ import type { Project } from "@/types/Portfolio";
 import { GithubCommitResponse } from "@/types/GithubCommitResponse";
 import { getLastRepoCommitUrl } from "@/utils/github";
 import { ProjectsContent } from "@/components/ProjectsPage/ProjectsContent";
-import { getReposLastCommits } from "@/services/github";
+import { getReposLastCommits, getReposStats, getRepoStats } from "@/services/github";
 import { ProjectLoader } from "@/components/ProjectLoader";
+import { GithubRepoStatsResponse } from "@/types/GithubRepoStatsResponse";
 
 export default async function ProjectsPage() {
     const projectsRepositories = projects.flatMap((project) =>
         project.repositories.map((repo) => ({ repoUrl: repo.url, branch: repo.mainBranch || "master" }))
     );
     const projectCommits: Record<string, GithubCommitResponse> = await getReposLastCommits(projectsRepositories);
+    const projectStats: Record<string, GithubRepoStatsResponse> = await getReposStats(projects);
     return (
         <div className="min-h-screen bg-background">
             <TopNav />
             <ThemeToggle />
 
             <div className="container max-w-6xl mx-auto px-4 py-8 pt-16">
-                <ProjectsContent projects={projects} projectCommits={projectCommits} />
+                <ProjectsContent projects={projects} projectCommits={projectCommits} projectStats={projectStats} />
             </div>
         </div>
     );

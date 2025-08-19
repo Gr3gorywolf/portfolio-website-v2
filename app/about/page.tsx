@@ -34,8 +34,28 @@ import { AnimatedStaggeredGrid } from "@/components/AnimatedStaggeredGrid";
 import { DiscordjsOriginal, DiscordjsOriginalWordmark, DiscordjsPlain } from "devicons-react";
 import { useState } from "react";
 import { ContactFormButton } from "@/components/AboutPage/ContactFormButton";
+import { GithubRepoStatsResponse } from "@/types/GithubRepoStatsResponse";
+import { getProjectMainRepoUrl } from "@/utils/github";
+import { getRepoStats } from "@/services/github";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+    const getFeaturedProjectsStats = async () =>{
+         const stats: Record<string, GithubRepoStatsResponse> = {};
+           await Promise.all(
+               projects.map(async (project) => {
+                   const repoUrl = getProjectMainRepoUrl(project);
+                   if (repoUrl) {
+                       const repoStats = await getRepoStats(repoUrl);
+                       if (repoStats) {
+                           stats[repoUrl] = repoStats;
+                       }
+                   }
+               })
+           );
+           return stats;
+    }
+    const featuredProjects = projects.filter((project) => project.featured);
+    const featuredProjectsStats = await getFeaturedProjectsStats();
     return (
         <div className="min-h-screen bg-background">
             <TopNav />
@@ -100,7 +120,7 @@ export default function AboutPage() {
                                                     Download resume
                                                 </Link>
                                             </Button>
-                                           <ContactFormButton />
+                                        <ContactFormButton />
                                         </div>
 
                                         <div className="flex gap-4 pt-4">
@@ -287,11 +307,10 @@ export default function AboutPage() {
                     </AnimatedWrapper>
 
                     <div className="space-y-6 mb-8">
-                        {projects
-                            .filter((project) => project.featured)
+                        {featuredProjects
                             .map((project, index) => (
                                 <AnimatedWrapper key={project.id} animation="fade-up" duration={600}>
-                                    <FeaturedProjectCard project={project} />
+                                    <FeaturedProjectCard stats={featuredProjectsStats?.[project.id]} project={project} />
                                 </AnimatedWrapper>
                             ))}
                     </div>

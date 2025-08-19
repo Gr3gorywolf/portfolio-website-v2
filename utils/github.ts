@@ -1,5 +1,13 @@
-import { Repository } from "@/types/Portfolio";
+import { Project, Repository } from "@/types/Portfolio";
 
+
+function getApiBaseUrl(repoUrl: string) {
+  const { username, repoName } = getRepoInfo(repoUrl) || {};
+  if (!username || !repoName) {
+    return "";
+  }
+  return `https://api.github.com/repos/${username}/${repoName}`;
+}
 function getRepoInfo(repoUrl: string) {
   const match = repoUrl.match(/github\.com\/([^/]+)\/([^/]+)(\.git)?/)
   if (!match) {
@@ -38,12 +46,9 @@ export function getLastRepoCommitUrl(
   repositoryUrl: string,
   branch = "master"
 ): string {
-  const { username, repoName } = getRepoInfo(repositoryUrl) || {};
-  if (!username || !repoName) {
-    return "";
-  }
+
   return `
-    https://api.github.com/repos/${username}/${repoName}/commits/${branch}
+    ${getApiBaseUrl(repositoryUrl)}/commits/${branch}
 `
 }
 
@@ -51,23 +56,31 @@ export function getLastRepoCommitUrl(
 export function getRepoCommitsUrl(
   repositoryUrl: string
 ): string {
-  const { username, repoName } = getRepoInfo(repositoryUrl) || {};
-  if (!username || !repoName) {
-    return "";
-  }
+
   return `
-    https://api.github.com/repos/${username}/${repoName}/commits?per_page=10
+    ${getApiBaseUrl(repositoryUrl)}/commits?per_page=10
+`
+}
+
+export function getRepoStatsUrl(
+  repositoryUrl: string
+): string {
+
+  return `
+    ${getApiBaseUrl(repositoryUrl)}/
 `
 }
 
 export function getRepoLastReleaseUrl(
   repositoryUrl: string,
 ): string {
-  const { username, repoName } = getRepoInfo(repositoryUrl) || {};
-  if (!username || !repoName) {
-    return "";
-  }
   return `
-    https://api.github.com/repos/${username}/${repoName}/releases/latest
+    ${getApiBaseUrl(repositoryUrl)}/releases/latest
 `
 }
+
+
+export const getProjectMainRepoUrl = (project: Project): string => {
+        const mainRepo = project.repositories.find((repo) => repo.isMain);
+        return mainRepo ? mainRepo.url : "";
+    };
