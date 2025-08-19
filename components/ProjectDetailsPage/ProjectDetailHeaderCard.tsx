@@ -65,7 +65,7 @@ export const ProjectDetailHeaderCard: FC<Props> = ({ project, lastCommit, releas
                                     })}
                                 </div>
                                 <p className="text-muted-foreground text-md leading-relaxed ">{project.description}</p>
-                                {stats && <GitHubStats stats={stats} variant="compact" className="project-stats" />}
+                                {stats && <GitHubStats stats={stats} variant="compact" className="project-stats mt-1" />}
                             </div>
                         </div>
                     </div>

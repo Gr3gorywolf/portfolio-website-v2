@@ -76,11 +76,11 @@ export function FeaturedProjectCard({ project, stats }: FeaturedProjectCardProps
                                     {project.tags.map((tag, index) => {
                                         return <ProjectTag key={index} type={tag} />;
                                     })}
-                                </div>
-                                {stats && <GitHubStats stats={stats} variant="compact"/>}
+                                </div> 
                             </div>
                         </div>
-                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{project.description}</p>
+                        <p className="text-muted-foreground text-sm  line-clamp-3">{project.description}</p>
+                        {stats && <GitHubStats stats={stats} variant="compact" className="mb-4 mt-2"/>}
                         <div className="mb-4">
                             <div className="flex flex-wrap gap-1">
                                 {project.technologies.slice(0, 4).map((tech, index) => (

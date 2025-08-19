@@ -111,7 +111,7 @@ export function ProjectCard({ project, lastCommit, stats }: ProjectCardProps) {
                 </div>
                 <p className="text-muted-foreground text-sm leading-relaxed line-clamp-6">{project.description}</p>
                 {stats && (
-                    <div className="pt-2">
+                    <div className="mt-1`">
                         <GitHubStats stats={stats} variant="compact" />
                     </div>
                 )}
