@@ -53,19 +53,19 @@ export function GitHubStats({ stats, variant = "compact", className = "" }: GitH
     return (
         <div className={`flex items-center gap-3 text-xs text-muted-foreground ${className}`}>
             <div className="flex items-center gap-1">
-                <Star className="w-3 h-3 text-white" />
+                <Star className="w-4 h-4 text-white" />
                 <span>{formatNumber(stats.stargazers_count)}</span>
             </div>
             <div className="flex items-center gap-1">
-                <GitFork className="w-3 h-3 text-white" />
+                <GitFork className="w-4 h-4 text-white" />
                 <span>{formatNumber(stats.forks)}</span>
             </div>
             <div className="flex items-center gap-1">
-                <Eye className="w-3 h-3 text-white" />
+                <Eye className="w-4 h-4 text-white" />
                 <span>{formatNumber(stats.watchers)}</span>
             </div>
             <div className="flex items-center gap-1">
-                <AlertCircle className="w-3 h-3 text-white" />
+                <AlertCircle className="w-4 h-4 text-white" />
                 <span>{formatNumber(stats.open_issues_count)}</span>
             </div>
         </div>

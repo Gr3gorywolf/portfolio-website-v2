@@ -23,6 +23,7 @@ export const getReposLastCommits = async (repos: { repoUrl: string, branch: stri
                     next: { revalidate: 3600 }
                 });
                 if (!response.ok) {
+                    logError(response);
                     throw new Error(`Failed to fetch commits for ${repo}`);
                 }
                 const data: GithubCommitResponse = await response.json();
@@ -68,6 +69,7 @@ export const getRepoCommits = async (repo: string) => {
             next: { revalidate: 3600 }
         });
         if (!response.ok) {
+            logError(response);
             throw new Error(`Failed to fetch commits for ${repo}`);
         }
         const data: GithubCommitResponse[] = await response.json();
@@ -85,6 +87,7 @@ export const getRepoLastRelease = async (repo: string) => {
             next: { revalidate: 3600 }
         });
         if (!response.ok) {
+            logError(response);
             throw new Error(`Failed to fetch releases for ${repo}`);
         }
         const data: GithubReleaseResponse = await response.json();
@@ -103,6 +106,7 @@ export const getRepoStats = async (repo: string) => {
             next: { revalidate: 3600 }
         });
         if (!response.ok) {
+            logError(response);
             throw new Error(`Failed to fetch stats for ${statsUrl}`);
         }
         const data: GithubRepoStatsResponse = await response.json();
