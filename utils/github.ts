@@ -67,7 +67,7 @@ export function getRepoStatsUrl(
 ): string {
 
   return `
-    ${getApiBaseUrl(repositoryUrl)}/
+    ${getApiBaseUrl(repositoryUrl)}
 `
 }
 

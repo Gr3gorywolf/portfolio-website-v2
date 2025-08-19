@@ -19,10 +19,6 @@ import {
     MapPin,
     Calendar,
     FolderOpen,
-    Briefcase,
-    Code,
-    GraduationCap,
-    User,
     Instagram,
 } from "lucide-react";
 
@@ -31,30 +27,29 @@ import { FeaturedProjectCard } from "@/components/FeaturedProjectCard";
 import { projects } from "@/data/projects";
 import { AnimatedWrapper } from "@/components/AnimatedWrapper";
 import { AnimatedStaggeredGrid } from "@/components/AnimatedStaggeredGrid";
-import { DiscordjsOriginal, DiscordjsOriginalWordmark, DiscordjsPlain } from "devicons-react";
-import { useState } from "react";
 import { ContactFormButton } from "@/components/AboutPage/ContactFormButton";
 import { GithubRepoStatsResponse } from "@/types/GithubRepoStatsResponse";
 import { getProjectMainRepoUrl } from "@/utils/github";
 import { getRepoStats } from "@/services/github";
 
 export default async function AboutPage() {
+    const featuredProjects = projects.filter((project) => project.featured);
     const getFeaturedProjectsStats = async () =>{
-         const stats: Record<string, GithubRepoStatsResponse> = {};
+         const featuredProjects: Record<string, GithubRepoStatsResponse> = {};
            await Promise.all(
                projects.map(async (project) => {
                    const repoUrl = getProjectMainRepoUrl(project);
                    if (repoUrl) {
                        const repoStats = await getRepoStats(repoUrl);
                        if (repoStats) {
-                           stats[repoUrl] = repoStats;
+                           featuredProjects[repoUrl] = repoStats;
                        }
                    }
                })
            );
-           return stats;
+           return featuredProjects;
     }
-    const featuredProjects = projects.filter((project) => project.featured);
+    
     const featuredProjectsStats = await getFeaturedProjectsStats();
     return (
         <div className="min-h-screen bg-background">
@@ -310,7 +305,7 @@ export default async function AboutPage() {
                         {featuredProjects
                             .map((project, index) => (
                                 <AnimatedWrapper key={project.id} animation="fade-up" duration={600}>
-                                    <FeaturedProjectCard stats={featuredProjectsStats?.[project.id]} project={project} />
+                                    <FeaturedProjectCard stats={featuredProjectsStats?.[getProjectMainRepoUrl(project)]} project={project} />
                                 </AnimatedWrapper>
                             ))}
                     </div>

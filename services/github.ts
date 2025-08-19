@@ -3,6 +3,15 @@ import { GithubReleaseResponse } from "@/types/GithubReleaseResponse";
 import { GithubRepoStatsResponse } from "@/types/GithubRepoStatsResponse";
 import { Project } from "@/types/Portfolio";
 import { getLastRepoCommitUrl, getProjectMainRepoUrl, getRepoCommitsUrl, getRepoLastReleaseUrl, getRepoStatsUrl } from "@/utils/github";
+
+const logError = (response:Response) =>{
+    console.error("Error fetching GitHub API:", JSON.stringify({
+        url: response.url,
+        status: response.status,
+        statusText: response.statusText,
+        data: response.body
+    }));
+}
 export const getReposLastCommits = async (repos: { repoUrl: string, branch: string }[]) => {
     const commits: Record<string, GithubCommitResponse> = {};
 
@@ -94,7 +103,7 @@ export const getRepoStats = async (repo: string) => {
             next: { revalidate: 3600 }
         });
         if (!response.ok) {
-            throw new Error(`Failed to fetch stats for ${repo}`);
+            throw new Error(`Failed to fetch stats for ${statsUrl}`);
         }
         const data: GithubRepoStatsResponse = await response.json();
         return data;
